@@ -13,7 +13,26 @@
 .container {
   margin-top: 60px;
 }
+.slideOut {
+  animation-name: slideout;
+  animation-duration: 1.8s;
+  animation-fill-mode: reverse;
+}
+
+@keyframes slideout{
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
 </style>
+
 <body>
   <div class="container">
     <div class="row">

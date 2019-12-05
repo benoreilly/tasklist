@@ -118,7 +118,8 @@ function storeTaskInLocalStorage(task){
 // Remove task function
 
 function removeTask(e){
-    if(e.target.parentElement.classList.contains('delete-item')){ 
+    if(e.target.parentElement.classList.contains('delete-item')){
+       
         e.target.parentElement.parentElement.remove();
 
         // remove from local storage
@@ -186,18 +187,11 @@ function filterTasks(e){
 function listSorter() {
     var sortList = document.querySelectorAll('ul.collection li.collection-item');
     var arrayList = Array.from(sortList);
-    //var sortedArray = arrayList.sort();
-    //console.log(sortList[0].textContent);
-    //console.log(sortList);
-    //console.log(arrayList);
-    // var foolist = arrayList.forEach(function(task, index){
-    //     var text = task.innerText;
-    //     console.log(text);   
-    // });
+    console.log(arrayList);
     
-    for(i = 0; i < sortList.length; i++){
-        sortList.item(i).style.backgroundColor = "#26a69a";
-    }
+    // for(i = 0; i < sortList.length; i++){
+    //     sortList.item(i).style.backgroundColor = "#26a69a";
+    // }
 };
 
 
