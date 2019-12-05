@@ -53,6 +53,9 @@ function getTasks(){
         // append li to ul
 
         taskList.appendChild(li);
+
+        listSorter();
+        
         });
 }
 
@@ -80,7 +83,7 @@ function addTask(e){
     // append li to ul
 
     taskList.appendChild(li);
-
+    
     // store in local storage
     storeTaskInLocalStorage(taskInput.value);
 
@@ -89,8 +92,11 @@ function addTask(e){
     taskInput.value = '';
 
     e.preventDefault();
+
+    listSorter();
     
 }
+
 
 
 // Store in local storage
@@ -138,6 +144,8 @@ function removeTaskFromLocalStorage(foofoo){
     });
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    listSorter();
 
 }
 
@@ -145,15 +153,19 @@ function removeTaskFromLocalStorage(foofoo){
 // Clear tasks function
 
 function clearTasks(e){
+    var confirmClear = confirm('Are you sure you want to clear out all of your tasks?');
+    if (confirmClear == true){
+    // Method A
+    // taskList.innerHTML = '';
 
-// Method A
-   // taskList.innerHTML = '';
-
-// Method B - faster
-    while(taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild);
-    }
+    // Method B - faster
+        while(taskList.firstChild) {
+            taskList.removeChild(taskList.firstChild);
+        }
     // while there is still a first child (there is still something in the list) then remove it
+    } else {
+        return false;
+    }
 }
 
 
@@ -170,3 +182,22 @@ function filterTasks(e){
         }
     });
 }
+
+function listSorter() {
+    var sortList = document.querySelectorAll('ul.collection li.collection-item');
+    var arrayList = Array.from(sortList);
+    //var sortedArray = arrayList.sort();
+    //console.log(sortList[0].textContent);
+    //console.log(sortList);
+    //console.log(arrayList);
+    // var foolist = arrayList.forEach(function(task, index){
+    //     var text = task.innerText;
+    //     console.log(text);   
+    // });
+    
+    for(i = 0; i < sortList.length; i++){
+        sortList.item(i).style.backgroundColor = "#26a69a";
+    }
+};
+
+
