@@ -38,7 +38,7 @@ function getTasks(){
         // create li element
         const li = document.createElement('li');
         // add class to it
-        li.className = 'collection-item';
+        li.className = 'collection-item slideOut taskItem';
         // create text node and append to li
         li.appendChild(document.createTextNode(task));
         //create new link element
@@ -53,8 +53,6 @@ function getTasks(){
         // append li to ul
 
         taskList.appendChild(li);
-
-        listSorter();
         
         });
 }
@@ -62,38 +60,36 @@ function getTasks(){
 // Add task function
 
 function addTask(e){
-    if(taskInput.value === ''){
-        alert('add a task');
+    if(taskInput.value !== ''){
+        // create li element
+        const li = document.createElement('li');
+        // add class to it
+        li.className = 'collection-item slideOut taskItem';
+        // create text node and append to li
+        li.appendChild(document.createTextNode(taskInput.value));
+        //create new link element
+        const link = document.createElement('a');
+        // add class
+        link.className = 'delete-item secondary-content';
+        // add icon html
+        link.innerHTML = '<i class="fa fa-remove"></i>';
+        // append the link to li
+        li.appendChild(link);
+
+
+        // append li to ul
+
+        taskList.appendChild(li);
+        
+        // store in local storage
+        storeTaskInLocalStorage(taskInput.value);
+
+        // clear input
+
+        taskInput.value = '';
+
+        e.preventDefault();
     }
-    // create li element
-    const li = document.createElement('li');
-    // add class to it
-    li.className = 'collection-item';
-    // create text node and append to li
-    li.appendChild(document.createTextNode(taskInput.value));
-    //create new link element
-    const link = document.createElement('a');
-    // add class
-    link.className = 'delete-item secondary-content';
-    // add icon html
-    link.innerHTML = '<i class="fa fa-remove"></i>';
-    // append the link to li
-    li.appendChild(link);
-
-    // append li to ul
-
-    taskList.appendChild(li);
-    
-    // store in local storage
-    storeTaskInLocalStorage(taskInput.value);
-
-    // clear input
-
-    taskInput.value = '';
-
-    e.preventDefault();
-
-    listSorter();
     
 }
 
@@ -146,7 +142,6 @@ function removeTaskFromLocalStorage(foofoo){
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
-    listSorter();
 
 }
 
@@ -184,14 +179,15 @@ function filterTasks(e){
     });
 }
 
-function listSorter() {
-    var sortList = document.querySelectorAll('ul.collection li.collection-item');
-    var arrayList = Array.from(sortList);
-    console.log(arrayList);
+// function listSorter() {
+//     var sortList = document.querySelectorAll('li.collection-item');
+//     console.log(sortList);
+//     var arrayList = Array.from(sortList);
+//    // console.log(arrayList);
+
     
-    // for(i = 0; i < sortList.length; i++){
-    //     sortList.item(i).style.backgroundColor = "#26a69a";
-    // }
-};
-
-
+//     for(i = 0; i < sortList.length; i++){
+//         //sortList.item(i).style.backgroundColor = "#26a69a";
+//         sortList.item(i).style.opacity = "0.9";
+//     }
+// };

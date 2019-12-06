@@ -1,0 +1,29 @@
+
+.container {
+    margin-top: 60px;
+}
+
+.taskItem {
+    background-color: #eee !important;
+    /* border-bottom: thin solid #26a69a !important; */
+}
+
+.slideOut {
+    animation-name: slideout;
+    animation-duration: 1.4s;
+    animation-direction: normal;
+    animation-fill-mode: none;
+}
+
+@keyframes slideout{
+  from {
+    margin-right: 100%;
+    width: 0;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+
