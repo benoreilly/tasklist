@@ -117,6 +117,9 @@ function removeTask(e){
     
     // remove from local storage
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+    console.log(e.target);
+
+    e.preventDefault();
 }
 
 
