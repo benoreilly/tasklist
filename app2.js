@@ -61,6 +61,8 @@ function getTasks(){
         taskList.appendChild(li);
         
         });
+
+        highPri();
 }
 
 // Add task function
@@ -89,7 +91,7 @@ function addTask(e){
         taskInput.value = '';
     }
     e.preventDefault();
-      
+    highPri();
 }
 
 
@@ -194,3 +196,19 @@ function filterTasks(e){
 //         sortList.item(i).style.opacity = "0.9";
 //     }
 // };
+
+function highPri() {
+    var taskList = document.getElementsByClassName('collection-item');
+    
+    for(i = 0; i < taskList.length; i++){ 
+        var getText = taskList.item(i).innerText;
+        var textArr = Array.from(getText);
+        var n = textArr.includes("!");
+        
+        if (n == true){
+            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)";
+            }
+    }    
+}
+
+

@@ -8,13 +8,17 @@
   
 }
 
-.taskItem {
-    background-color: #eee !important;
+.collection .taskItem {
+    background-color: #eee;
     /* border-bottom: thin solid #26a69a !important; */
 }
 
 ul.collection {
   margin-bottom: 20px !important;
+}
+
+.delete-item:hover {
+  cursor: pointer;
 }
 
 .slideIn {
