@@ -7,6 +7,12 @@ const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
 
+// Get date
+
+const d = new Date();
+let y = d.toLocaleDateString('en-US');
+var today = document.getElementById('tDate').innerText = y;
+
 // Load event listeners
 
 loadEventListeners();
@@ -107,17 +113,15 @@ function storeTaskInLocalStorage(task){
 // Remove task function
 
 function removeTask(e){
-    e.target.parentElement.parentElement.classList.remove('slideIn');
-    e.target.parentElement.parentElement.classList.add('slideOut');
-    setTimeout(() => {
-        if(e.target.parentElement.classList.contains('delete-item')){
-            e.target.parentElement.parentElement.remove();
-        }
-    }, 1000);  
+    if(e.target.parentElement.classList.contains('delete-item')){
+        e.target.parentElement.parentElement.classList.toggle('slideOut');
+        setTimeout(() => {
+            e.target.parentElement.parentElement.remove(); 
+        }, 700);
+    }  
     
     // remove from local storage
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    console.log(e.target);
 
     e.preventDefault();
 }
