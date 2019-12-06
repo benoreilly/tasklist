@@ -8,14 +8,14 @@
     /* border-bottom: thin solid #26a69a !important; */
 }
 
-.slideOut {
-    animation-name: slideout;
-    animation-duration: 1.4s;
+.slideIn {
+    animation-name: slideIn;
+    animation-duration: 1s;
     animation-direction: normal;
     animation-fill-mode: none;
 }
 
-@keyframes slideout{
+@keyframes slideIn{
   from {
     margin-right: 100%;
     width: 0;
@@ -23,6 +23,25 @@
 
   to {
     margin-right: 0%;
+    width: 100%;
+  }
+}
+
+.slideOut {
+  animation-name: slideout;
+  animation-duration: 1s;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+
+@keyframes slideout{
+  from {
+    margin-left: 0%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 100%;
     width: 100%;
   }
 }

@@ -38,7 +38,7 @@ function getTasks(){
         // create li element
         const li = document.createElement('li');
         // add class to it
-        li.className = 'collection-item slideOut taskItem';
+        li.className = 'collection-item slideIn taskItem';
         // create text node and append to li
         li.appendChild(document.createTextNode(task));
         //create new link element
@@ -46,7 +46,7 @@ function getTasks(){
         // add class
         link.className = 'delete-item secondary-content';
         // add icon html
-        link.innerHTML = '<i class="fa fa-remove"></i>';
+        link.innerHTML = '<i class="fa fa-check-circle"></i>';
         // append the link to li
         li.appendChild(link);
 
@@ -64,7 +64,7 @@ function addTask(e){
         // create li element
         const li = document.createElement('li');
         // add class to it
-        li.className = 'collection-item slideOut taskItem';
+        li.className = 'collection-item slideIn taskItem';
         // create text node and append to li
         li.appendChild(document.createTextNode(taskInput.value));
         //create new link element
@@ -72,7 +72,7 @@ function addTask(e){
         // add class
         link.className = 'delete-item secondary-content';
         // add icon html
-        link.innerHTML = '<i class="fa fa-remove"></i>';
+        link.innerHTML = '<i class="fa fa-check-circle"></i>';
         // append the link to li
         li.appendChild(link);
         // append li to ul
@@ -107,15 +107,18 @@ function storeTaskInLocalStorage(task){
 // Remove task function
 
 function removeTask(e){
-    if(e.target.parentElement.classList.contains('delete-item')){
-       
-        e.target.parentElement.parentElement.remove();
-
-        // remove from local storage
-        removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    }
-
+    e.target.parentElement.parentElement.classList.remove('slideIn');
+    e.target.parentElement.parentElement.classList.add('slideOut');
+    setTimeout(() => {
+        if(e.target.parentElement.classList.contains('delete-item')){
+            e.target.parentElement.parentElement.remove();
+        }
+    }, 1000);  
+    
+    // remove from local storage
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement);
 }
+
 
 // Remove from local storage function
 
