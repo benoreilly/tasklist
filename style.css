@@ -10,7 +10,14 @@
 
 .collection .taskItem {
     background-color: #eee;
-    /* border-bottom: thin solid #26a69a !important; */
+}
+
+.collection .taskItem.isChecked {
+  background-color: rgba(201, 68, 58, 0.5);
+}
+
+.priorityCheck {
+  margin-bottom: 10px;
 }
 
 ul.collection {

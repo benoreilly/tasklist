@@ -7,6 +7,7 @@ const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
 
+
 // Get date
 
 const d = new Date();
@@ -44,7 +45,12 @@ function getTasks(){
         // create li element
         const li = document.createElement('li');
         // add class to it
-        li.className = 'collection-item slideIn taskItem';
+        var checked = $('#priCheck').is(':checked');
+        if(checked){ 
+            li.className = 'collection-item slideIn taskItem isChecked';  
+        } else {
+            li.className = 'collection-item slideIn taskItem';
+        }
         // create text node and append to li
         li.appendChild(document.createTextNode(task));
         //create new link element
@@ -58,7 +64,7 @@ function getTasks(){
 
         // append li to ul
 
-        taskList.appendChild(li);
+        taskList.insertBefore(li, taskList.childNodes[0]);
         
         });
 
@@ -72,7 +78,12 @@ function addTask(e){
         // create li element
         const li = document.createElement('li');
         // add class to it
-        li.className = 'collection-item slideIn taskItem';
+        var checked = $('#priCheck').is(':checked');
+        if(checked){ 
+            li.className = 'collection-item slideIn taskItem isChecked';  
+        } else {
+            li.className = 'collection-item slideIn taskItem';
+        }
         // create text node and append to li
         li.appendChild(document.createTextNode(taskInput.value));
         //create new link element
@@ -84,14 +95,21 @@ function addTask(e){
         // append the link to li
         li.appendChild(link);
         // append li to ul
-        taskList.appendChild(li);
+        taskList.insertBefore(li, taskList.childNodes[0]);
         // store in local storage
         storeTaskInLocalStorage(taskInput.value);
         // clear input
         taskInput.value = '';
     }
+
+    
+    
     e.preventDefault();
-    highPri();
+    
+    
+    $('#priCheck').prop('checked', false);
+
+    
 }
 
 
@@ -109,6 +127,8 @@ function storeTaskInLocalStorage(task){
     tasks.push(task);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    highPri();
 }
 
 
@@ -124,6 +144,7 @@ function removeTask(e){
     
     // remove from local storage
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+    highPri();
 
     e.preventDefault();
 }
@@ -147,7 +168,7 @@ function removeTaskFromLocalStorage(foofoo){
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
-
+    // highPri();
 }
 
 
@@ -167,6 +188,8 @@ function clearTasks(e){
     } else {
         return false;
     }
+
+    localStorage.clear();
 }
 
 
@@ -184,31 +207,17 @@ function filterTasks(e){
     });
 }
 
-// function listSorter() {
-//     var sortList = document.querySelectorAll('li.collection-item');
-//     console.log(sortList);
-//     var arrayList = Array.from(sortList);
-//    // console.log(arrayList);
 
-    
-//     for(i = 0; i < sortList.length; i++){
-//         //sortList.item(i).style.backgroundColor = "#26a69a";
-//         sortList.item(i).style.opacity = "0.9";
-//     }
-// };
 
 function highPri() {
     var taskList = document.getElementsByClassName('collection-item');
-    
     for(i = 0; i < taskList.length; i++){ 
         var getText = taskList.item(i).innerText;
-        var textArr = Array.from(getText);
-        var n = textArr.includes("!");
-        
-        if (n == true){
-            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)";
-            }
-    }    
-}
+        var a = getText.includes("!");
+        if (a == true){
+            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)";    
+        }
+    }
 
+}
 
