@@ -85,7 +85,8 @@ function addTask(e){
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(checked){ 
-            li.className = 'collection-item slideIn taskItem isChecked';  
+            li.className = 'collection-item slideIn taskItem isChecked';
+            li.style.fontWeight = '500';  
         } else {
             li.className = 'collection-item slideIn taskItem';
         }
@@ -113,7 +114,7 @@ function addTask(e){
         var x = storeTaskInLocalStorage(f);
        
         
-        
+        highPri();
         // clear input
         taskInput.value = '';
     }
@@ -122,7 +123,7 @@ function addTask(e){
     
     e.preventDefault();
     
-    highPri();
+    
     $('#priCheck').prop('checked', false);
     
     
@@ -232,10 +233,11 @@ function highPri() {
     for(i = 0; i < taskList.length; i++){ 
         var getText = taskList.item(i).innerText;
         var a = getText.includes("!");
-        if (a == true || checked == true){
+        if (a == true){
             taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)"; 
             taskList.item(i).style.fontWeight = "500";
-        }      
+        } 
+             
     }
     
 }
