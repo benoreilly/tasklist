@@ -108,9 +108,10 @@ function addTask(e){
         } else {
             f = taskInput.value;
         }
-        console.log(f);
         
-        storeTaskInLocalStorage(f);
+
+        var x = storeTaskInLocalStorage(f);
+       
         
         
         // clear input
@@ -121,7 +122,7 @@ function addTask(e){
     
     e.preventDefault();
     
-    
+    highPri();
     $('#priCheck').prop('checked', false);
     
     
@@ -227,14 +228,16 @@ function filterTasks(e){
 
 function highPri() {
     var taskList = document.getElementsByClassName('collection-item');
+    var checked = $('#priCheck').is(':checked');
     for(i = 0; i < taskList.length; i++){ 
         var getText = taskList.item(i).innerText;
         var a = getText.includes("!");
-        if (a == true){
-            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)";    
-        }
+        if (a == true || checked == true){
+            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)"; 
+            taskList.item(i).style.fontWeight = "500";
+        }      
     }
-
+    
 }
 
 // function isChecked() {
