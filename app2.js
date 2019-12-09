@@ -14,6 +14,9 @@ const d = new Date();
 let y = d.toLocaleDateString('en-US');
 var today = document.getElementById('tDate').innerText = y;
 
+
+
+
 // Load event listeners
 
 loadEventListeners();
@@ -35,11 +38,13 @@ function loadEventListeners() {
 
 function getTasks(){
     let tasks;
+    
     if(localStorage.getItem('tasks') === null){
         tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
+    //console.log(checked);
 
     tasks.forEach(function(task){
         // create li element
@@ -97,7 +102,17 @@ function addTask(e){
         // append li to ul
         taskList.insertBefore(li, taskList.childNodes[0]);
         // store in local storage
-        storeTaskInLocalStorage(taskInput.value);
+        
+        if (checked == true){
+            var f = taskInput.value + " " + "!";    
+        } else {
+            f = taskInput.value;
+        }
+        console.log(f);
+        
+        storeTaskInLocalStorage(f);
+        
+        
         // clear input
         taskInput.value = '';
     }
@@ -108,7 +123,7 @@ function addTask(e){
     
     
     $('#priCheck').prop('checked', false);
-
+    
     
 }
 
@@ -117,6 +132,7 @@ function addTask(e){
 // Store in local storage
 
 function storeTaskInLocalStorage(task){
+    var checked = $('#priCheck').is(':checked');
     let tasks;
     if(localStorage.getItem('tasks') === null){
         tasks = [];    
@@ -168,7 +184,7 @@ function removeTaskFromLocalStorage(foofoo){
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
-    // highPri();
+   
 }
 
 
@@ -220,4 +236,19 @@ function highPri() {
     }
 
 }
+
+// function isChecked() {
+//     var taskList = document.getElementsByClassName('collection-item');
+//     var checked = $('#priCheck').is(':checked');
+//     for(i = 0; i < taskList.length; i++){ 
+//         var getCheck = taskList.item(i).classList.includes('isChecked');
+//         console.log(getCheck);
+//         if(checked){
+//             console.log('yes');
+//         } else {
+//             console.log('no');
+//         };
+//     }
+
+// }
 
