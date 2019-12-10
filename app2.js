@@ -12,7 +12,7 @@ const checked = $('#priCheck').is(':checked');
 
 const d = new Date();
 let y = d.toLocaleDateString('en-US');
-var today = document.getElementById('tDate').innerText = y;
+var today = document.getElementById('tDate').innerText = y + " |";
 
 
 
