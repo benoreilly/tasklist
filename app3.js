@@ -41,9 +41,10 @@
         
 // }
 
-//Weather ---------------------------- //
 
 
+
+//-------------Weather ---------------------------- //
 
 let weatherData = document.querySelector('#weather-data');
 let weatherCity = document.querySelector('#weather-city');
@@ -73,11 +74,11 @@ loadJSON(function(response) {
     jsonresponse = JSON.parse(response);
     
     weatherCity.innerText = jsonresponse.name;
-    // weatherTemp.innerText = jsonresponse.main.temp;
+
     //convert celcius to farenheit
     var a = jsonresponse.main.temp;
     weatherTemp.innerText = Math.round(a*9/5+32)+String.fromCharCode(176)+ "F";
-    //weatherDescription.innerText= jsonresponse.weather;
+    weatherDescription.innerText = jsonresponse.weather[0].main;
    
   });
 
