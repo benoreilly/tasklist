@@ -9,6 +9,16 @@
   margin-right: 10px; 
 }
 
+.card .card-content .card-title i.sunIcon{
+  line-height: 16px;
+}
+
+@media screen and (max-width: 1080px){
+  .weather-data {
+    display: none;
+  }
+}
+
 .collection .taskItem {
     background-color: #eee;
 }
@@ -86,3 +96,4 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
