@@ -30,7 +30,7 @@ ul.collection {
 
 .slideIn {
     animation-name: slideIn;
-    animation-duration: 0.7s;
+    animation-duration: 0.5s;
     animation-direction: normal;
     animation-fill-mode: none;
     animation-timing-function: linear;
@@ -56,9 +56,9 @@ ul.collection {
   rgba(15, 65, 60, .3) 75%);
   color: white;
   height: 100%;
-  width: 20%;
+  width: 5%;
   animation-name: slideout;
-  animation-duration: 0.7s;
+  animation-duration: 0.5s;
   animation-direction: normal;
   animation-fill-mode: none;
   animation-timing-function: linear;
@@ -76,3 +76,12 @@ ul.collection {
   }
 }
 
+#fact {
+  display:none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
