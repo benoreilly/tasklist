@@ -34,6 +34,8 @@ function loadEventListeners() {
     filter.addEventListener('keyup', filterTasks);
 }
 
+
+
 // Get Tasks from LS
 
 function getTasks(){
@@ -42,38 +44,43 @@ function getTasks(){
     if(localStorage.getItem('tasks') === null){
         tasks = [];
     } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks = JSON.parse(localStorage.getItem('tasks'));        
     }
-    //console.log(checked);
 
     tasks.forEach(function(task){
+        console.log(task);
         // create li element
         const li = document.createElement('li');
         // add class to it
         var checked = $('#priCheck').is(':checked');
-        if(checked){ 
-            li.className = 'collection-item slideIn taskItem isChecked';  
+        if(task.includes("!")){ 
+            li.className = 'collection-item slideIn taskItem isChecked';
+            const hpIcon = document.createElement('span');
+            hpIcon.className = 'hp-Icon';
+            hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
+            li.appendChild(hpIcon);
+            task = task.replace('!', ''); 
         } else {
             li.className = 'collection-item slideIn taskItem';
         }
         // create text node and append to li
         li.appendChild(document.createTextNode(task));
+
         //create new link element
         const link = document.createElement('a');
         // add class
         link.className = 'delete-item secondary-content';
         // add icon html
-        link.innerHTML = '<i class="fa fa-check-circle"></i>';
+        link.innerHTML = '<i class="material-icons">check_circle</i>';
         // append the link to li
         li.appendChild(link);
 
         // append li to ul
-
-        taskList.insertBefore(li, taskList.childNodes[0]);
         
-        });
+        taskList.insertBefore(li, taskList.childNodes[0]);
 
-        highPri();
+        });
+        
 }
 
 // Add task function
@@ -90,6 +97,12 @@ function addTask(e){
         } else {
             li.className = 'collection-item slideIn taskItem';
         }
+        if (checked){
+            const hpIcon = document.createElement('span');
+            hpIcon.className = 'hp-Icon';
+            hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
+            li.appendChild(hpIcon);
+        }
         // create text node and append to li
         li.appendChild(document.createTextNode(taskInput.value));
         //create new link element
@@ -97,7 +110,7 @@ function addTask(e){
         // add class
         link.className = 'delete-item secondary-content';
         // add icon html
-        link.innerHTML = '<i class="fa fa-check-circle"></i>';
+        link.innerHTML = '<i class="material-icons">check_circle</i>';
         // append the link to li
         li.appendChild(link);
         // append li to ul
@@ -112,7 +125,6 @@ function addTask(e){
       
     var x = storeTaskInLocalStorage(f);
             
-    highPri();
 
         // clear input
         taskInput.value = '';
@@ -139,7 +151,6 @@ function storeTaskInLocalStorage(task){
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    //highPri();
 }
 
 // Remove task function
@@ -154,7 +165,6 @@ function removeTask(e){
     
     // remove from local storage
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    highPri();
 
     e.preventDefault();
 }
@@ -178,7 +188,6 @@ function removeTaskFromLocalStorage(foofoo){
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
-   
 }
 
 
@@ -219,18 +228,9 @@ function filterTasks(e){
 
 
 
-function highPri() {
-    var taskList = document.getElementsByClassName('collection-item');
-    
-    for(i = 0; i < taskList.length; i++){ 
-        var getText = taskList.item(i).innerText;
-        var a = getText.includes("!");
-        if (a == true){
-            taskList.item(i).style.backgroundColor = "rgba(201, 68, 58, 0.5)"; 
-            taskList.item(i).style.fontWeight = "500";
-        }  
-    }
       
-}
+
+
+
 
 

@@ -9,6 +9,11 @@
   margin-right: 10px; 
 }
 
+span.hp-Icon i.tiny {
+  vertical-align: text-bottom;
+  font-size: 1.2rem;
+}
+
 .card .card-content .card-title i.sunIcon{
   line-height: 16px;
 }
@@ -25,6 +30,7 @@
 
 .collection .taskItem.isChecked {
   background-color: rgba(201, 68, 58, 0.5);
+  font-weight: 500;
 }
 
 .priorityCheck {
