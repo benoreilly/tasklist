@@ -49,8 +49,19 @@
               <label for="filter">Filter Tasks</label>
             </div>
             <ul class="collection"></ul>
-            <a href="#" class="clear-tasks btn black">Clear Tasks</a>
-          </div>          
+            <a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear Tasks</a>
+          </div> 
+          <!-- Modal Structure -->
+            <div id="modal1" class="modal clearTaskModal">
+              <div class="modal-content">
+                <h4 class="center-align">Clear Tasks Confirmation</h4>
+                <p class="center-align">Are you sure you want to clear out all tasks?</p>
+              </div>
+              <div class="modal-footer modal-btns">
+                <a href="#!" class="modal-close clear-tasks waves-effect waves-green btn"><i class="material-icons left">delete_forever</i>Clear My Tasks</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn"><i class="material-icons left">cancel</i>Cancel</a>
+              </div>
+            </div>        
         </div>
       </div>
     </div>

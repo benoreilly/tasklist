@@ -5,6 +5,7 @@ const taskList = document.querySelector('.collection');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
+const modalTrigger = document.querySelector('.modal-trigger');
 const checked = $('#priCheck').is(':checked');
 
 
@@ -29,6 +30,8 @@ function loadEventListeners() {
     form.addEventListener('submit', addTask);
     //remove task event
     taskList.addEventListener('click', removeTask);
+    //open modal
+    modalTrigger.addEventListener('click', openModal);
     // clear task event
     clearBtn.addEventListener('click', clearTasks);
     // filter
@@ -197,22 +200,38 @@ function removeTaskFromLocalStorage(taskItem){
 }
 
 
+
+// Init modal
+
+document.addEventListener('DOMContentLoaded', function() {
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+})
+
+//Open clear task modal
+
+function openModal(e){
+    //var instance = M.Modal.getInstance(elem);
+    //this.open();   
+    e.preventDefault();  
+}
+
 // Clear tasks function
 
 function clearTasks(e){
-    var confirmClear = confirm('Are you sure you want to clear out all of your tasks?');
-    if (confirmClear == true){
+ 
     // Method A
     // taskList.innerHTML = '';
 
     // Method B - faster
-        while(taskList.firstChild) {
-            taskList.removeChild(taskList.firstChild);
-        }
-    // while there is still a first child (there is still something in the list) then remove it
-    } else {
-        return false;
+    while(taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
     }
+    // while there is still a first child (there is still something in the list) then remove it
+    // } else {
+    //     return false;
+    // }
 
     localStorage.clear();
 }
@@ -231,10 +250,3 @@ function filterTasks(e){
         }
     });
 }
-
-
-
-// Prevent linebreak
-
-
-$("#idContentEditable").keypress(function(e){ return e.which != 13; });

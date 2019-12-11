@@ -103,3 +103,15 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.modal.clearTaskModal{
+  width: 35%
+}
+.modal .modal-footer.modal-btns {
+  text-align:center;
+  margin: auto auto 10px;
+  height: 65px;
+}
+
+.modal .modal-footer.modal-btns .btn {
+  margin-right: 10px;
+}
