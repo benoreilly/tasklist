@@ -73,23 +73,18 @@ function loadJSON(callback){
 loadJSON(function(response) {
     // Do Something with the response e.g.
     jsonresponse = JSON.parse(response);
-    
-    
     weatherCity.innerText = jsonresponse.name;
-
     //convert celcius to farenheit
     var a = jsonresponse.main.temp;
     weatherTemp.innerText = Math.round(a*9/5+32)+String.fromCharCode(176)+ "F";
     weatherDescription.innerText = jsonresponse.weather[0].main;
     
-    let w = jsonresponse.weather[0].main;
-    
+    let w = jsonresponse.weather[0].main; 
     if (w === "Clouds"){
         document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">| wb_cloudy</i>';
     } else {
         document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">| wb_sunny</i>';
     }
-
   });
 
 
