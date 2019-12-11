@@ -48,7 +48,7 @@ function getTasks(){
     }
 
     tasks.forEach(function(task){
-        console.log(task);
+        
         // create li element
         const li = document.createElement('li');
         // add class to it
@@ -164,6 +164,7 @@ function removeTask(e){
     }  
     
     // remove from local storage
+    
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
 
     e.preventDefault();
@@ -172,19 +173,24 @@ function removeTask(e){
 
 // Remove from local storage function
 
-function removeTaskFromLocalStorage(foofoo){
+function removeTaskFromLocalStorage(taskItem){
+    //console.log(taskItem.firstChild.nextSibling.textContent);
     let tasks;
     if(localStorage.getItem('tasks') === null){
         tasks = [];    
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-
+ 
+    var taskPriCheck = taskItem.firstChild.nextSibling.textContent + "!";
     tasks.forEach(function(task, index){
-        if(foofoo.textContent === task){
+        if(taskItem.firstChild.textContent === task) {
+            tasks.splice(index, 1);
+        } else if (taskPriCheck === task){
             tasks.splice(index, 1);
         }
     });
+
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
