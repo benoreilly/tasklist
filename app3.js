@@ -81,19 +81,17 @@ loadJSON(function(response) {
     var a = jsonresponse.main.temp;
     weatherTemp.innerText = Math.round(a*9/5+32)+String.fromCharCode(176)+ "F";
     weatherDescription.innerText = jsonresponse.weather[0].main;
-   
+    
+    let w = jsonresponse.weather[0].main;
+    
+    if (w === "Clouds"){
+        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">| wb_cloudy</i>';
+    } else {
+        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">| wb_sunny</i>';
+    }
+
   });
 
-//  async function getWeatherFetch(){
-    
-//     const URL = 'https://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&appid=84f31defeb6290a61b56ea3d45ad79d9&units=metric';
-//     try {
-//     const fetchResult = fetch(URL);
-//     const response = await fetchResult;
-//     const jsonData = await response.json();
-//     console.log(jsonData);
-//   } catch(e){
-//     throw Error(e);
-//   }
-// }
+
         
+
