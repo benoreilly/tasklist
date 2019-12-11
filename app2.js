@@ -45,13 +45,11 @@ function loadEventListeners() {
 
 function getTasks(){
     let tasks;
-    
     if(localStorage.getItem('tasks') === null){
         tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));        
     }
-
     tasks.forEach(function(task){
         // create li element
         const li = document.createElement('li');
@@ -64,11 +62,10 @@ function getTasks(){
             li.appendChild(hpIcon);
             task = task.replace('!', ''); 
         } else {
-            li.className = 'collection-item slideIn taskItem';
+            li.className = 'collection-item slideIn taskItem isNotChecked';
         }
         // create text node and append to li
         li.appendChild(document.createTextNode(task));
-
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -77,12 +74,15 @@ function getTasks(){
         link.innerHTML = '<i class="material-icons">check_circle</i>';
         // append the link to li
         li.appendChild(link);
-
         // append li to ul
-        
-        taskList.insertBefore(li, taskList.childNodes[0]);
-
-        });
+        let checkedList = document.querySelectorAll('li.isChecked');
+        let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        if (li.classList.contains('isChecked')){
+            taskList.insertBefore(li, taskList.childNodes[0]);
+        } else {
+                taskList.insertBefore(li, notCheckedList[0]);
+        }
+    });
         
 }
 
@@ -95,10 +95,9 @@ function addTask(e){
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(checked){ 
-            li.className = 'collection-item slideIn taskItem isChecked';
-            li.style.fontWeight = '500';  
+            li.className = 'collection-item slideIn taskItem isChecked'; 
         } else {
-            li.className = 'collection-item slideIn taskItem';
+            li.className = 'collection-item slideIn taskItem isNotChecked';
         }
         if (checked){
             const hpIcon = document.createElement('span');
@@ -116,8 +115,18 @@ function addTask(e){
         link.innerHTML = '<i class="material-icons">check_circle</i>';
         // append the link to li
         li.appendChild(link);
+
         // append li to ul
-        taskList.insertBefore(li, taskList.childNodes[0]);
+        
+        let checkedList = document.querySelectorAll('li.isChecked');
+        let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        
+        if (li.classList.contains('isChecked')){
+            taskList.insertBefore(li, taskList.childNodes[0]);
+        } else {
+                taskList.insertBefore(li, notCheckedList[0]);
+        }
+            
         // store in local storage
         
         if (checked == true){
@@ -153,7 +162,7 @@ function storeTaskInLocalStorage(task){
     tasks.push(task);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
+    
 }
 
 // Remove task function
@@ -242,11 +251,16 @@ function clearTasks(e){
 function filterTasks(e){
     const text = e.target.value.toLowerCase();
     document.querySelectorAll('.collection-item').forEach(function(task){
-        const item = task.firstChild.textContent;
-        if(item.toLowerCase().indexOf(text) != -1){
+        const itemLow = task.firstChild.textContent;
+        const itemHigh = task.firstChild.nextSibling.textContent;
+        if(itemLow.toLowerCase().indexOf(text) != -1){
+            task.style.display = 'block';
+        } else if(itemHigh.toLowerCase().indexOf(text) != -1){
             task.style.display = 'block';
         } else {
             task.style.display = 'none';
         }
     });
 }
+
+
