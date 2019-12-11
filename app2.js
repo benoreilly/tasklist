@@ -52,10 +52,7 @@ function getTasks(){
     tasks.forEach(function(task){
         // create li element
         const li = document.createElement('li');
-        //add editable attribute
-        li.setAttribute("contenteditable", "true");
         // add class to it
-        var checked = $('#priCheck').is(':checked');
         if(task.includes("!")){ 
             li.className = 'collection-item slideIn taskItem isChecked';
             const hpIcon = document.createElement('span');
@@ -92,9 +89,6 @@ function addTask(e){
     if(taskInput.value !== ''){
         // create li element
         const li = document.createElement('li');
-        //add editable attribute
-        li.setAttribute("contenteditable", "true");
-        li.setAttribute("id", "ContentEditable");
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(checked){ 
