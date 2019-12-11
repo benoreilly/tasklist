@@ -8,6 +8,7 @@ const taskInput = document.querySelector('#task');
 const checked = $('#priCheck').is(':checked');
 
 
+
 // Get date
 
 const d = new Date();
@@ -32,6 +33,7 @@ function loadEventListeners() {
     clearBtn.addEventListener('click', clearTasks);
     // filter
     filter.addEventListener('keyup', filterTasks);
+
 }
 
 
@@ -48,9 +50,10 @@ function getTasks(){
     }
 
     tasks.forEach(function(task){
-        
         // create li element
         const li = document.createElement('li');
+        //add editable attribute
+        li.setAttribute("contenteditable", "true");
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(task.includes("!")){ 
@@ -89,6 +92,9 @@ function addTask(e){
     if(taskInput.value !== ''){
         // create li element
         const li = document.createElement('li');
+        //add editable attribute
+        li.setAttribute("contenteditable", "true");
+        li.setAttribute("id", "ContentEditable");
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(checked){ 
@@ -174,7 +180,7 @@ function removeTask(e){
 // Remove from local storage function
 
 function removeTaskFromLocalStorage(taskItem){
-    //console.log(taskItem.firstChild.nextSibling.textContent);
+    
     let tasks;
     if(localStorage.getItem('tasks') === null){
         tasks = [];    
@@ -234,9 +240,7 @@ function filterTasks(e){
 
 
 
-      
+// Prevent linebreak
 
 
-
-
-
+$("#idContentEditable").keypress(function(e){ return e.which != 13; });

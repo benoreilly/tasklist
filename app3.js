@@ -56,11 +56,12 @@ function loadJSON(callback){
     let xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&appid=84f31defeb6290a61b56ea3d45ad79d9&units=metric', true);
-    xobj.onload = function () {
+    xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             
             // .open will NOT return a value but simply returns undefined in async mode so use a callback
-           callback(xobj.responseText);
+           callback(this.responseText);
+           
 
         }
     }
@@ -73,6 +74,7 @@ loadJSON(function(response) {
     // Do Something with the response e.g.
     jsonresponse = JSON.parse(response);
     
+    
     weatherCity.innerText = jsonresponse.name;
 
     //convert celcius to farenheit
@@ -82,4 +84,16 @@ loadJSON(function(response) {
    
   });
 
- 
+//  async function getWeatherFetch(){
+    
+//     const URL = 'https://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&appid=84f31defeb6290a61b56ea3d45ad79d9&units=metric';
+//     try {
+//     const fetchResult = fetch(URL);
+//     const response = await fetchResult;
+//     const jsonData = await response.json();
+//     console.log(jsonData);
+//   } catch(e){
+//     throw Error(e);
+//   }
+// }
+        
