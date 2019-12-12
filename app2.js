@@ -16,7 +16,9 @@ let d = new Date();
 let y = d.toLocaleDateString('en-US');
 var today = document.getElementById('tDate').innerText = y;
 
+
 //Get time
+myTimer();
 var timeVar = setInterval(myTimer, 1000);
 
 function myTimer() {
