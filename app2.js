@@ -12,11 +12,19 @@ const checked = $('#priCheck').is(':checked');
 
 // Get date
 
-const d = new Date();
+let d = new Date();
 let y = d.toLocaleDateString('en-US');
 var today = document.getElementById('tDate').innerText = y;
 
+//Get time
+var timeVar = setInterval(myTimer, 1000);
 
+function myTimer() {
+let d = new Date();
+//let t = d.toLocaleTimeString();
+let t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+var tTime = document.getElementById('tTime').innerText = t;
+}
 
 
 // Load event listeners

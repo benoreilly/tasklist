@@ -18,6 +18,27 @@ span.hp-Icon i.tiny {
   line-height: 16px;
 }
 
+#tTime::after,
+#tDate::after {
+  content: " | ";
+  font-size: 2rem;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 1080px){
+  #tTime,
+  #tDate{
+    font-size: 1.1rem;
+    margin-right: 4px;
+  }
+}
+
+@media screen and (max-width: 1080px){
+  #tTime::after {
+    content: "";
+  }
+}
+
 @media screen and (max-width: 1080px){
   .weather-data {
     display: none;
