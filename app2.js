@@ -140,7 +140,7 @@ function addTask(e){
         // store in local storage
         
         if (checked == true){
-            var f = taskInput.value + " " + "!";    
+            var f = taskInput.value +"!";    
         } else {
             f = taskInput.value;
         }
@@ -212,7 +212,8 @@ function removeTaskFromLocalStorage(taskItem){
             tasks.splice(index, 1);
         }
     });
-
+    console.log(taskPriCheck);
+    console.log(taskItem.firstChild.textContent);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
