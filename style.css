@@ -3,8 +3,13 @@
     margin-top: 60px;
 }
 
+mark{
+  color: black;
+  font-weight: 600;
+}
+
 .card-title span,
-.sunIcon {
+.weatherIcon {
   font-size: 1.2rem;
   margin-right: 10px; 
 }
@@ -14,7 +19,7 @@ span.hp-Icon i.tiny {
   font-size: 1.2rem;
 }
 
-.card .card-content .card-title i.sunIcon{
+.card .card-content .card-title i.weatherIcon{
   line-height: 16px;
 }
 

@@ -81,11 +81,11 @@ loadJSON(function(response) {
     
     let w = jsonresponse.weather[0].main; 
     if (w === "Clouds"){
-        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">wb_cloudy</i>';
+        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons weatherIcon secondary-content">wb_cloudy</i>';
     } else if (w === "Rain"){
-        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">wb_cloudy</i>';
+        document.getElementById('weather-icon').innerHTML = '<span class="small material-icons weatherIcon secondary-content"><img src="img/weather-rainy.png"></span>';
     } else {
-        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons sunIcon secondary-content">wb_sunny</i>';
+        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons weatherIcon secondary-content">wb_sunny</i>';
     }
   });
 
