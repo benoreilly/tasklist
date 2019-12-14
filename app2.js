@@ -212,8 +212,6 @@ function removeTaskFromLocalStorage(taskItem){
             tasks.splice(index, 1);
         }
     });
-    console.log(taskPriCheck);
-    console.log(taskItem.firstChild.textContent);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
@@ -259,11 +257,15 @@ function clearTasks(e){
 
 // Filter tasks
 
+
 function filterTasks(e){
     const text = e.target.value.toLowerCase();
     document.querySelectorAll('.collection-item').forEach(function(task){
-        const itemLow = task.firstChild.textContent;
-        const itemHigh = task.firstChild.nextSibling.textContent;
+        
+        const itemLow = task.firstChild.textContent.trim();
+        const itemHigh = task.firstChild.nextSibling.textContent.trim();
+
+        //if no match, it equals -1
         if(itemLow.toLowerCase().indexOf(text) != -1){
             task.style.display = 'block';
         } else if(itemHigh.toLowerCase().indexOf(text) != -1){
@@ -272,6 +274,60 @@ function filterTasks(e){
             task.style.display = 'none';
         }
     });
+        function markFunction(){
+            $("ul.collection.context").mark(text);
+            
+            
+        // unmark
+            $("ul.collection.context").unmark({
+                done: function(){
+                    $("ul.collection.context").mark(text);
+                }
+            })
+        }
+
+        markFunction();   
+ 
 }
+
+
+
+        // var options = {
+        //     "element": "",
+        //     "className": "",
+        //     "exclude": [],
+        //     "separateWordSearch": true,
+        //     "accuracy": "partially",
+        //     "diacritics": true,
+        //     "synonyms": {},
+        //     "iframes": false,
+        //     "iframesTimeout": 5000,
+        //     "acrossElements": false,
+        //     "caseSensitive": false,
+        //     "ignoreJoiners": false,
+        //     "ignorePunctuation": [],
+        //     "wildcards": "disabled",
+        //     "each": function(node){
+        //         // node is the marked DOM element
+        //     },
+        //     "filter": function(textNode, foundTerm, totalCounter, counter){
+        //         // textNode is the text node which contains the found term
+        //         // foundTerm is the found search term
+        //         // totalCounter is a counter indicating the total number of all marks
+        //         //              at the time of the function call
+        //         // counter is a counter indicating the number of marks for the found term
+        //         return true; // must return either true or false
+        //     },
+        //     "noMatch": function(term){
+        //         // term is the not found term
+        //     },
+        //     "done": function(counter){
+        //         // counter is a counter indicating the total number of all marks
+        //     },
+        //     "debug": false,
+        //     "log": window.console
+        // };
+          
+ 
 
 

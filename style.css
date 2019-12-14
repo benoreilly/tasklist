@@ -3,8 +3,13 @@
     margin-top: 60px;
 }
 
-mark{
-  color: black;
+mark {
+  background-color: #80cbc4 ;
+  font-weight: 600;
+  /* background: none; */
+}
+
+span.hightlight {
   font-weight: 600;
 }
 
