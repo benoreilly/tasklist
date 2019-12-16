@@ -74,8 +74,11 @@ function getTasks(){
         } else {
             li.className = 'collection-item slideIn taskItem isNotChecked';
         }
-        // create text node and append to li
-        li.appendChild(document.createTextNode(task));
+        let taskItemText = document.createElement('span');
+        taskItemText.className = 'taskContext context';
+        taskItemText.innerText = task;
+        li.appendChild(taskItemText);
+  
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -115,8 +118,12 @@ function addTask(e){
             hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
             li.appendChild(hpIcon);
         }
-        // create text node and append to li
-        li.appendChild(document.createTextNode(taskInput.value));
+        // create span for text
+        let taskItemText = document.createElement('span');
+        taskItemText.className = 'taskContext context';
+        taskItemText.innerText = taskInput.value;
+        li.appendChild(taskItemText);
+
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -257,76 +264,31 @@ function clearTasks(e){
 
 // Filter tasks
 
-
 function filterTasks(e){
     const text = e.target.value.toLowerCase();
-    document.querySelectorAll('.collection-item').forEach(function(task){
-        
-        const itemLow = task.firstChild.textContent.trim();
-        const itemHigh = task.firstChild.nextSibling.textContent.trim();
-
+    document.querySelectorAll('.collection-item span.context').forEach(function(task){
+        const item = task.textContent.trim();
         //if no match, it equals -1
-        if(itemLow.toLowerCase().indexOf(text) != -1){
-            task.style.display = 'block';
-        } else if(itemHigh.toLowerCase().indexOf(text) != -1){
-            task.style.display = 'block';
+        if(item.toLowerCase().indexOf(text) != -1){
+            task.parentElement.style.display = 'block';
         } else {
-            task.style.display = 'none';
-        }
+            task.parentElement.style.display = 'none';
+        }      
     });
+
         function markFunction(){
-            $("ul.collection.context").mark(text);
-            
-            
+            $("span.context").mark(text);
+                 
         // unmark
-            $("ul.collection.context").unmark({
+            $("span.context").unmark({
                 done: function(){
-                    $("ul.collection.context").mark(text);
+                    $("span.context").mark(text);
                 }
             })
         }
-
-        markFunction();   
- 
+        markFunction();
 }
 
-
-
-        // var options = {
-        //     "element": "",
-        //     "className": "",
-        //     "exclude": [],
-        //     "separateWordSearch": true,
-        //     "accuracy": "partially",
-        //     "diacritics": true,
-        //     "synonyms": {},
-        //     "iframes": false,
-        //     "iframesTimeout": 5000,
-        //     "acrossElements": false,
-        //     "caseSensitive": false,
-        //     "ignoreJoiners": false,
-        //     "ignorePunctuation": [],
-        //     "wildcards": "disabled",
-        //     "each": function(node){
-        //         // node is the marked DOM element
-        //     },
-        //     "filter": function(textNode, foundTerm, totalCounter, counter){
-        //         // textNode is the text node which contains the found term
-        //         // foundTerm is the found search term
-        //         // totalCounter is a counter indicating the total number of all marks
-        //         //              at the time of the function call
-        //         // counter is a counter indicating the number of marks for the found term
-        //         return true; // must return either true or false
-        //     },
-        //     "noMatch": function(term){
-        //         // term is the not found term
-        //     },
-        //     "done": function(counter){
-        //         // counter is a counter indicating the total number of all marks
-        //     },
-        //     "debug": false,
-        //     "log": window.console
-        // };
           
  
 
