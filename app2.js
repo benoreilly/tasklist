@@ -71,6 +71,10 @@ function getTasks(){
             hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
             li.appendChild(hpIcon);
             task = task.replace('!', ''); 
+        } else if (task.includes("https")){
+            li.className = "collection-item slideIn taskItem taskLink"
+            // const taskLink = document.createElement('a');
+            // taskLink.setAttribute("href", task);
         } else {
             li.className = 'collection-item slideIn taskItem isNotChecked';
         }
@@ -293,3 +297,13 @@ function filterTasks(e){
  
 
 
+
+// Init pushpin
+
+
+$(document).ready(function(){
+    $('.pushpin').pushpin();
+  });
+        
+
+var instance = M.Pushpin.getInstances(elems);

@@ -157,3 +157,15 @@ input::-webkit-inner-spin-button {
     font-size: 0.8rem;
   }
 }
+.pushpin.pp-1 {
+  top: 50px !important;
+}
+.pushpin.pp-2 {
+  top: 150px !important;
+}
+.pushpin.pp-3 {
+  top: 250px !important;
+}
+.pushpin.pp-4 {
+  top: 350px !important;
+}

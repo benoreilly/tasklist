@@ -13,61 +13,89 @@
 
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
+  <main>
+    <section>
+      <div class="container">
         <div class="row">
-        <div id="main" class="card">
-          <div class="card-content">
-            <span class="card-title">The Nebullist
-              <span class="weather-data">
-                <span id="weather-description" class="secondary-content"></span>
-                <span id="weather-temp" class="secondary-content"></span>
-                <span id="weather-city" class="secondary-content"></span>
-                <span id="weather-icon"></span> 
-              </span>
-              <span id="tTime" class="secondary-content"></span>
-              <span id="tDate" class="secondary-content"></span>
-            </span>          
+          <div class="col s12">
             <div class="row">
-              <form id="task-form" autocomplete="off">
-                <div class="input-field col s12">
-                  <input type="text" name='task' id='task'>
-                  <label for="task">New Task</label>
-                </div>
-                  <div class="priorityCheck">
-                    <input type="checkbox" id="priCheck" class="filled-in" checkbox="checked" />
-                    <label for="priCheck">High Priority</span>
+            <div id="main" class="card">
+              <div class="card-content">
+                <span class="card-title">The Nebullist
+                  <span class="weather-data">
+                    <span id="weather-description" class="secondary-content"></span>
+                    <span id="weather-temp" class="secondary-content"></span>
+                    <span id="weather-city" class="secondary-content"></span>
+                    <span id="weather-icon"></span> 
+                  </span>
+                  <span id="tTime" class="secondary-content"></span>
+                  <span id="tDate" class="secondary-content"></span>
+                </span>          
+                <div class="row">
+                  <form id="task-form" autocomplete="off">
+                    <div class="input-field col s12">
+                      <input type="text" name='task' id='task'>
+                      <label for="task">New Task</label>
+                    </div>
+                      <div class="priorityCheck">
+                        <input type="checkbox" id="priCheck" class="filled-in" checkbox="checked" />
+                        <label for="priCheck">High Priority</span>
+                      </div>
                   </div>
+                    <input type="submit" value="Add Task" class='btn'>
+                  </form>
+                </div>
               </div>
-                <input type="submit" value="Add Task" class='btn'>
-              </form>
+              <div class="card-action">
+                <h5 id="task-title">Your Tasks</h5>
+                <div class="input-field col s12">
+                  <input type="text" name="filter" id="filter">
+                  <label for="filter">Filter Tasks</label>
+                </div>
+                <ul class="collection"></ul>
+                <a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear Tasks</a>
+              </div> 
+              <!-- Modal Structure -->
+                <div id="modal1" class="modal clearTaskModal">
+                  <div class="modal-content">
+                    <h5 class="center-align">Clear Tasks Confirmation</h5>
+                    <p class="center-align">Are you sure you want to clear out all tasks?</p>
+                  </div>
+                  <div class="modal-footer modal-btns">
+                    <a href="#!" class="modal-close clear-tasks waves-effect waves-green btn"><i class="material-icons left">delete_forever</i>Clear My Tasks</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn"><i class="material-icons left">cancel</i>Cancel</a>
+                  </div>
+                </div>        
             </div>
           </div>
-          <div class="card-action">
-            <h5 id="task-title">Your Tasks</h5>
-            <div class="input-field col s12">
-              <input type="text" name="filter" id="filter">
-              <label for="filter">Filter Tasks</label>
-            </div>
-            <ul class="collection"></ul>
-            <a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear Tasks</a>
-          </div> 
-          <!-- Modal Structure -->
-            <div id="modal1" class="modal clearTaskModal">
-              <div class="modal-content">
-                <h5 class="center-align">Clear Tasks Confirmation</h5>
-                <p class="center-align">Are you sure you want to clear out all tasks?</p>
-              </div>
-              <div class="modal-footer modal-btns">
-                <a href="#!" class="modal-close clear-tasks waves-effect waves-green btn"><i class="material-icons left">delete_forever</i>Clear My Tasks</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn"><i class="material-icons left">cancel</i>Cancel</a>
-              </div>
-            </div>        
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+   
+      <div class="pushpin pp-1">
+        <div class="card-panel indigo pinned">
+          <a class="white-text" href="https://www.google.com" target="_blank">Google</a>
+        </div>
+      </div>
+      <div class="pushpin pp-2">
+        <div class="card-panel blue pinned">
+          <a class="white-text" href="https://www.gmail.com" target="_blank">Gmail</a>
+        </div>
+      </div>
+      <div class="pushpin pp-3">
+        <div class="card-panel red pinned">
+          <a class="white-text" href="https://www.youtube.com" target="_blank">Youtube</a>
+        </div>
+      </div>
+      <div class="pushpin pp-4">
+        <div class="card-panel blue pinned">
+          <a class="white-text" href="https://developer.mozilla.org/en-US/" target="_blank">MDN</a>
+        </div>
+      </div>
+    
+
+  </main>
+
 
 
   <script
