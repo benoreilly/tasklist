@@ -126,9 +126,10 @@ function addTask(e){
         let taskItemText = document.createElement('span');
         taskItemText.className = 'taskContext context';
         taskItemText.innerText = taskInput.value;
+        
         li.appendChild(taskItemText);
 
-        // taskItemText.innerText = taskInput.value.replace('@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', taskInput.value);
+
 
         //create new link element
         const link = document.createElement('a');
