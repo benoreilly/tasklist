@@ -128,6 +128,8 @@ function addTask(e){
         taskItemText.innerText = taskInput.value;
         li.appendChild(taskItemText);
 
+        taskItemText.innerText = taskInput.value.replace('@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', taskInput.value);
+
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -157,8 +159,7 @@ function addTask(e){
         }
       
     var x = storeTaskInLocalStorage(f);
-            
-
+        
         // clear input
         taskInput.value = '';
     }
@@ -168,7 +169,6 @@ function addTask(e){
     $('#priCheck').prop('checked', false);
       
 }
-
 
 // Store in local storage
 
@@ -185,7 +185,6 @@ function storeTaskInLocalStorage(task){
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
 }
-
 // Remove task function
 
 function removeTask(e){
@@ -202,7 +201,6 @@ function removeTask(e){
 
     e.preventDefault();
 }
-
 
 // Remove from local storage function
 
@@ -227,8 +225,6 @@ function removeTaskFromLocalStorage(taskItem){
     localStorage.setItem('tasks', JSON.stringify(tasks));
     
 }
-
-
 
 // Init modal
 
@@ -264,10 +260,7 @@ function clearTasks(e){
 
     localStorage.clear();
 }
-
-
 // Filter tasks
-
 function filterTasks(e){
     const text = e.target.value.toLowerCase();
     document.querySelectorAll('.collection-item span.context').forEach(function(task){
@@ -292,18 +285,12 @@ function filterTasks(e){
         }
         markFunction();
 }
-
-          
- 
-
-
-
+        
 // Init pushpin
-
 
 $(document).ready(function(){
     $('.pushpin').pushpin();
   });
         
 
-var instance = M.Pushpin.getInstances(elems);
+// var instance = M.Pushpin.getInstances(elems);
