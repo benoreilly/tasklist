@@ -128,7 +128,7 @@ function addTask(e){
         taskItemText.innerText = taskInput.value;
         li.appendChild(taskItemText);
 
-        taskItemText.innerText = taskInput.value.replace('@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', taskInput.value);
+        // taskItemText.innerText = taskInput.value.replace('@(https?://([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?)@', '<a href="$1">$1</a>', taskInput.value);
 
         //create new link element
         const link = document.createElement('a');
