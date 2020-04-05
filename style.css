@@ -169,3 +169,12 @@ input::-webkit-inner-spin-button {
 .pushpin.pp-4 {
   top: 350px !important;
 }
+
+.pushpin .card-panel {
+  width: 120px;
+  height: 60px;
+}
+
+.pushpin i {
+  margin-left: 5px;
+}

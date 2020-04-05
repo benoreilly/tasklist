@@ -7,6 +7,8 @@ const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 const modalTrigger = document.querySelector('.modal-trigger');
 const checked = $('#priCheck').is(':checked');
+//const sortNameBtn = document.getElementById('sortBtn');
+const draggable_list = document.getElementById('draggable-list')
 
 
 
@@ -23,7 +25,6 @@ var timeVar = setInterval(myTimer, 1000);
 
 function myTimer() {
 let d = new Date();
-//let t = d.toLocaleTimeString();
 let t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 var tTime = document.getElementById('tTime').innerText = t;
 }
@@ -46,8 +47,13 @@ function loadEventListeners() {
     clearBtn.addEventListener('click', clearTasks);
     // filter
     filter.addEventListener('keyup', filterTasks);
+    //sort alpha
+    // sortNameBtn.addEventListener('click', sortName);
 
 }
+
+
+
 
 
 
@@ -57,31 +63,39 @@ function getTasks(){
     let tasks;
     if(localStorage.getItem('tasks') === null){
         tasks = [];
+        
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));        
     }
+    tasks.sort(function(a,b) {
+        var taskA = a.toUpperCase();
+        var taskB = b.toUpperCase();
+        if( taskA < taskB) 
+            return 1;
+        if( taskA > taskB) 
+            return -1;
+    });
     tasks.forEach(function(task){
+        
         // create li element
         const li = document.createElement('li');
         // add class to it
         if(task.includes("!")){ 
-            li.className = 'collection-item slideIn taskItem isChecked';
-            const hpIcon = document.createElement('span');
-            hpIcon.className = 'hp-Icon';
-            hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
-            li.appendChild(hpIcon);
+            li.className = 'collection-item slideIn hoverable taskItem isChecked';
             task = task.replace('!', ''); 
-        } else if (task.includes("https")){
-            li.className = "collection-item slideIn taskItem taskLink"
-            // const taskLink = document.createElement('a');
-            // taskLink.setAttribute("href", task);
         } else {
-            li.className = 'collection-item slideIn taskItem isNotChecked';
+            li.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
         let taskItemText = document.createElement('span');
-        taskItemText.className = 'taskContext context';
+        taskItemText.className = 'taskContext context number';
         taskItemText.innerText = task;
+        
         li.appendChild(taskItemText);
+
+        // let dragDiv = document.createElement('div');
+        // dragDiv.classList('.draggable');
+        // console.log(dragDiv);
+        // li.appendChild(dragDiv);
   
         //create new link element
         const link = document.createElement('a');
@@ -98,10 +112,10 @@ function getTasks(){
             taskList.insertBefore(li, taskList.childNodes[0]);
         } else {
                 taskList.insertBefore(li, notCheckedList[0]);
-        }
-    });
-        
+        }  
+    })        
 }
+
 
 // Add task function
 
@@ -109,22 +123,18 @@ function addTask(e){
     if(taskInput.value !== ''){
         // create li element
         const li = document.createElement('li');
+        
         // add class to it
         var checked = $('#priCheck').is(':checked');
         if(checked){ 
-            li.className = 'collection-item slideIn taskItem isChecked'; 
+            li.className = 'collection-item slideIn hoverable taskItem isChecked'; 
         } else {
-            li.className = 'collection-item slideIn taskItem isNotChecked';
+            li.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
-        if (checked){
-            const hpIcon = document.createElement('span');
-            hpIcon.className = 'hp-Icon';
-            hpIcon.innerHTML = '<i class="tiny material-icons">priority_high</i>';
-            li.appendChild(hpIcon);
-        }
+
         // create span for text
         let taskItemText = document.createElement('span');
-        taskItemText.className = 'taskContext context';
+        taskItemText.className = 'taskContext context number';
         taskItemText.innerText = taskInput.value;
         
         li.appendChild(taskItemText);
@@ -142,14 +152,13 @@ function addTask(e){
 
         // append li to ul
         
-        let checkedList = document.querySelectorAll('li.isChecked');
-        let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        //let checkedList = document.querySelectorAll('li.isChecked');
+        //let notCheckedList = document.querySelectorAll('li.isNotChecked');
         
         if (li.classList.contains('isChecked')){
             taskList.insertBefore(li, taskList.childNodes[0]);
-        } else {
-                taskList.insertBefore(li, notCheckedList[0]);
         }
+     
             
         // store in local storage
         
@@ -158,18 +167,21 @@ function addTask(e){
         } else {
             f = taskInput.value;
         }
-      
-    var x = storeTaskInLocalStorage(f);
+
+        var x;
+        x = storeTaskInLocalStorage(f);
         
         // clear input
         taskInput.value = '';
     }
 
     e.preventDefault();
+
     
     $('#priCheck').prop('checked', false);
       
 }
+
 
 // Store in local storage
 

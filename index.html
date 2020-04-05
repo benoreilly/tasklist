@@ -48,11 +48,12 @@
               </div>
               <div class="card-action">
                 <h5 id="task-title">Your Tasks</h5>
+                <!-- <button class="btn" id="sortBtn">Sort Alphabetically</button> -->
                 <div class="input-field col s12">
                   <input type="text" name="filter" id="filter">
                   <label for="filter">Filter Tasks</label>
                 </div>
-                <ul class="collection"></ul>
+                <ul class="collection draggable-list" id="draggable-list"></ul>
                 <a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear Tasks</a>
               </div> 
               <!-- Modal Structure -->
@@ -73,23 +74,25 @@
     </section>
    
       <div class="pushpin pp-1 hide-on-small-only">
-        <div class="card-panel indigo pinned">
+        <div class="card-panel indigo pinned center valign-wrapper">
           <a class="white-text" href="https://www.google.com" target="_blank">Google</a>
         </div>
       </div>
       <div class="pushpin pp-2 hide-on-small-only">
-        <div class="card-panel blue pinned">
+        <div class="card-panel blue pinned center valign-wrapper">
           <a class="white-text" href="https://www.gmail.com" target="_blank">Gmail</a>
+          <i class="white-text material-icons">email</i>
         </div>
       </div>
       <div class="pushpin pp-3 hide-on-small-only">
-        <div class="card-panel red pinned">
+        <div class="card-panel red pinned center valign-wrapper">
           <a class="white-text" href="https://www.youtube.com" target="_blank">Youtube</a>
+          <i class="white-text material-icons">play_arrow</i>
         </div>
       </div>
       <div class="pushpin pp-4 hide-on-small-only">
-        <div class="card-panel blue pinned">
-          <a class="white-text" href="https://developer.mozilla.org/en-US/" target="_blank">MDN</a>
+        <div class="card-panel blue pinned center valign-wrapper">
+          <a class="white-text" href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla</a>
         </div>
       </div>
     
@@ -98,10 +101,7 @@
 
 
 
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>  
   <script src="app2.js"></script>
