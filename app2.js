@@ -47,8 +47,6 @@ function loadEventListeners() {
     clearBtn.addEventListener('click', clearTasks);
     // filter
     filter.addEventListener('keyup', filterTasks);
-    //sort alpha
-    // sortNameBtn.addEventListener('click', sortName);
 
 }
 
@@ -152,11 +150,13 @@ function addTask(e){
 
         // append li to ul
         
-        //let checkedList = document.querySelectorAll('li.isChecked');
-        //let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        let checkedList = document.querySelectorAll('li.isChecked');
+        let notCheckedList = document.querySelectorAll('li.isNotChecked');
         
         if (li.classList.contains('isChecked')){
             taskList.insertBefore(li, taskList.childNodes[0]);
+        } else {	
+            taskList.insertBefore(li, notCheckedList[0]);	
         }
      
             
