@@ -168,8 +168,8 @@ function addTask(e){
             f = taskInput.value;
         }
 
-        var x;
-        x = storeTaskInLocalStorage(f);
+    
+        var x = storeTaskInLocalStorage(f);
         
         // clear input
         taskInput.value = '';
@@ -226,11 +226,13 @@ function removeTaskFromLocalStorage(taskItem){
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
  
-    var taskPriCheck = taskItem.firstChild.nextSibling.textContent + "!";
+    var taskPriCheck = taskItem.firstChild.textContent + "!";
+    console.log(taskPriCheck);
     tasks.forEach(function(task, index){
         if(taskItem.firstChild.textContent === task) {
             tasks.splice(index, 1);
-        } else if (taskPriCheck === task){
+        } 
+        else if (taskPriCheck === task){
             tasks.splice(index, 1);
         }
     });
