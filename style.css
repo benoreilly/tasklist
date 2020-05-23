@@ -161,18 +161,24 @@ input::-webkit-inner-spin-button {
   top: 50px !important;
 }
 .pushpin.pp-2 {
-  top: 150px !important;
+  top: 125px !important;
 }
 .pushpin.pp-3 {
-  top: 250px !important;
+  top: 200px !important;
 }
 .pushpin.pp-4 {
+  top: 275px !important;
+}
+.pushpin.pp-5 {
   top: 350px !important;
+}
+.pushpin.pp-6 {
+  top: 425px !important;
 }
 
 .pushpin .card-panel {
-  width: 120px;
-  height: 60px;
+  /* width: 110px; */
+  height: 40px;
 }
 
 .pushpin i {
