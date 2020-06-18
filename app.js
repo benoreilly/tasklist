@@ -50,11 +50,6 @@ function loadEventListeners() {
 
 }
 
-
-
-
-
-
 // Get Tasks from LS
 
 function getTasks(){
@@ -84,16 +79,22 @@ function getTasks(){
         } else {
             li.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
-        let taskItemText = document.createElement('span');
-        taskItemText.className = 'taskContext context number';
-        taskItemText.innerText = task;
-        
-        li.appendChild(taskItemText);
 
-        // let dragDiv = document.createElement('div');
-        // dragDiv.classList('.draggable');
-        // console.log(dragDiv);
-        // li.appendChild(dragDiv);
+        if(!task.includes('https://')){
+            var taskItemText = document.createElement('span');
+            taskItemText.className = 'taskContext';
+            taskItemText.innerText = task;
+        } else {
+            var taskItemText = document.createElement('a');
+            taskItemText.className = 'taskContext task-link';
+            taskItemText.setAttribute('href', task);
+            taskItemText.setAttribute('target', '_blank');
+            taskItemText.setAttribute('rel', 'noopener');
+            taskItemText.innerText = task;
+        }
+ 
+      
+        li.appendChild(taskItemText);
   
         //create new link element
         const link = document.createElement('a');
@@ -104,7 +105,7 @@ function getTasks(){
         // append the link to li
         li.appendChild(link);
         // append li to ul
-        let checkedList = document.querySelectorAll('li.isChecked');
+        // let checkedList = document.querySelectorAll('li.isChecked');
         let notCheckedList = document.querySelectorAll('li.isNotChecked');
         if (li.classList.contains('isChecked')){
             taskList.insertBefore(li, taskList.childNodes[0]);
@@ -130,15 +131,23 @@ function addTask(e){
             li.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
 
-        // create span for text
-        let taskItemText = document.createElement('span');
-        taskItemText.className = 'taskContext context number';
-        taskItemText.innerText = taskInput.value;
+        //create span or link for task
+      
+        if(!taskInput.value.includes('https://')){
+            var taskItemText = document.createElement('span');
+            taskItemText.className = 'taskContext';
+            taskItemText.innerText = taskInput.value;
+        } else {
+                var taskItemText = document.createElement('a');
+                taskItemText.className = 'taskContext task-link';
+                taskItemText.setAttribute('href', taskInput.value);
+                taskItemText.setAttribute('target', '_blank');
+                taskItemText.setAttribute('rel', 'noopener');
+                taskItemText.innerText = taskInput.value;
+        }
         
+
         li.appendChild(taskItemText);
-
-
-
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -308,4 +317,5 @@ $(document).ready(function(){
   });
         
 
-// var instance = M.Pushpin.getInstances(elems);
+  var xx = document.querySelector('.collection .collection-item:last-child');
+  
