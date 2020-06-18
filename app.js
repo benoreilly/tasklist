@@ -236,7 +236,6 @@ function removeTaskFromLocalStorage(taskItem){
     }
  
     var taskPriCheck = taskItem.firstChild.textContent + "!";
-    console.log(taskPriCheck);
     tasks.forEach(function(task, index){
         if(taskItem.firstChild.textContent === task) {
             tasks.splice(index, 1);
