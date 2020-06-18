@@ -8,7 +8,7 @@ const taskInput = document.querySelector('#task');
 const modalTrigger = document.querySelector('.modal-trigger');
 const checked = $('#priCheck').is(':checked');
 //const sortNameBtn = document.getElementById('sortBtn');
-const draggable_list = document.getElementById('draggable-list')
+// const draggable_list = document.getElementById('draggable-list')
 
 
 
@@ -82,11 +82,11 @@ function getTasks(){
 
         if(!task.includes('https://')){
             var taskItemText = document.createElement('span');
-            taskItemText.className = 'taskContext';
+            taskItemText.className = 'taskContext context';
             taskItemText.innerText = task;
         } else {
             var taskItemText = document.createElement('a');
-            taskItemText.className = 'taskContext task-link';
+            taskItemText.className = 'taskContext context task-link';
             taskItemText.setAttribute('href', task);
             taskItemText.setAttribute('target', '_blank');
             taskItemText.setAttribute('rel', 'noopener');
@@ -135,17 +135,17 @@ function addTask(e){
       
         if(!taskInput.value.includes('https://')){
             var taskItemText = document.createElement('span');
-            taskItemText.className = 'taskContext';
+            taskItemText.className = 'taskContext context';
             taskItemText.innerText = taskInput.value;
         } else {
-                var taskItemText = document.createElement('a');
-                taskItemText.className = 'taskContext task-link';
-                taskItemText.setAttribute('href', taskInput.value);
-                taskItemText.setAttribute('target', '_blank');
-                taskItemText.setAttribute('rel', 'noopener');
-                taskItemText.innerText = taskInput.value;
+            var taskItemText = document.createElement('a');
+            taskItemText.className = 'taskContext context task-link';
+            taskItemText.setAttribute('href', taskInput.value);
+            taskItemText.setAttribute('target', '_blank');
+            taskItemText.setAttribute('rel', 'noopener');
+            taskItemText.innerText = taskInput.value;
         }
-        
+
 
         li.appendChild(taskItemText);
         //create new link element
@@ -287,7 +287,7 @@ function clearTasks(e){
 // Filter tasks
 function filterTasks(e){
     const text = e.target.value.toLowerCase();
-    document.querySelectorAll('.collection-item span.context').forEach(function(task){
+    document.querySelectorAll('.collection-item .context').forEach(function(task){
         const item = task.textContent.trim();
         //if no match, it equals -1
         if(item.toLowerCase().indexOf(text) != -1){
@@ -298,12 +298,12 @@ function filterTasks(e){
     });
 
         function markFunction(){
-            $("span.context").mark(text);
+            $(".context").mark(text);
                  
         // unmark
-            $("span.context").unmark({
+            $(".context").unmark({
                 done: function(){
-                    $("span.context").mark(text);
+                    $(".context").mark(text);
                 }
             })
         }
@@ -317,5 +317,4 @@ $(document).ready(function(){
   });
         
 
-  var xx = document.querySelector('.collection .collection-item:last-child');
   
