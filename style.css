@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden !important;
+}
+
 
 .container {
     margin-top: 60px;
@@ -187,4 +192,11 @@ input::-webkit-inner-spin-button {
 
 .pushpin i {
   margin-left: 5px;
+}
+
+/* News */
+
+#news-img {
+  width: 250px;
+  height: 210px;
 }
