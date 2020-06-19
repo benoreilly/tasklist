@@ -1,10 +1,9 @@
 
-let newsTitle = document.getElementById('news-title');
-let newsDesc = document.getElementById('news-description');
-let newsUrl = document.getElementById('news-url');
-let newsImg = document.getElementById('news-img');
-const newsData = document.getElementById('news-data');
-
+// let newsTitle = document.getElementById('news-title');
+// let newsDesc = document.getElementById('news-description');
+// let newsUrl = document.getElementById('news-url');
+// let newsImg = document.getElementById('news-img');
+// const newsData = document.getElementById('news-data');
 
 
 var newsSettings = {
@@ -16,31 +15,65 @@ var newsSettings = {
 	"data": "{}"
   }
   
-  $.ajax(newsSettings).done(function (response) {
-	  articleArr = response.articles;
-	  console.log(articleArr);
-	  articleArr.forEach(item => {
-        // const element = document.createElement('div.card-panel');
-		newsTitle.innerText = item.title;
-		newsDesc.innerText = item.description;
-		newsUrl.innerText = item.url;
-		newsImg.setAttribute('src', item.urlToImage);
-		newsImg.className = 'news-img';
-	  })
+  $.ajax(newsSettings).done(function (responseText) {
+	  var articleArr = responseText.articles;
+	  var newsSection = document.getElementById('news-results');
+	
+
+	  newsSection.innerHTML = `
+	  <div class="container">
+		  <div class="row">
+			  <div class="col s12">
+				  <div class="card-panel news-card">
+					  <div class="news-data">
+					  	
+						  <div class="news-data-content">
+						  
+					  </div>  
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	  `;
+	 
+	  for (let i = 0; i < articleArr.length; i++){
+		var newsData = document.getElementById('news-data');
+		var newsDataContent = document.querySelector('.news-data-content');
+		
+
+		var newsHeader = document.createElement('h5');
+		newsHeader.className = "news-title";
+		let dataTitle = articleArr[i].title;
+
+		var newsLink = document.createElement('a');
+		newsLink.setAttribute('href', articleArr[i].url);
+		newsLink.setAttribute('target', '_blank');
+		newsLink.innerText = dataTitle;
+
+		newsHeader.appendChild(newsLink);
+		newsDataContent.appendChild(newsHeader);
+
+		var newsDescription = document.createElement('h6');
+		newsDescription.ClassName = "news-description";
+		let dataDesc = articleArr[i].description;
+		newsDescription.innerText = dataDesc;
+		newsDataContent.appendChild(newsDescription);
+
+
+		var newsImgContainer = document.createElement('div');
+		newsImgContainer.className = "news-data-content-img";
+
+		var newsImg = document.createElement('img');
+		newsImg.ClassName = "news-img";
+		let dataImg = articleArr[i].urlToImage;
+		newsImg.setAttribute('src', dataImg)
+
+		newsImgContainer.appendChild(newsImg);
+		newsDataContent.appendChild(newsImgContainer);
+	  }	
 });
 
-result.innerHTML = `
-<div class="container>
-<div class="row">
-<div class="col s12">
-<div class="card-panel card-panel-lyrics">
-<h2 class="songInfo center"><strong>${artist}</strong> - ${songTitle}</h2>
-<span class="lyrics">${lyrics}</span>
-<div class="container center"><a class="goBack" href="index.html"><i class="material-icons">arrow_back</i>Back</a></div>
-</div>
-</div>
-</div>
-</div>
 
-`;
+
 
