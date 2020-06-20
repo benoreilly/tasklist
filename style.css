@@ -231,8 +231,20 @@ input::-webkit-inner-spin-button {
   align-self: center;
   max-width: 200px;
   max-height: 125px;
+  margin-top: 16px;
 }
 
 .news-title a:hover {
   text-decoration: underline;
+}
+
+.news-source {
+  display:inline;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: orange;
+  color: #fff;
+  padding: 2px 8px 2px 8px;
+  border-top-right-radius: 8px;
 }
