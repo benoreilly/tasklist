@@ -5,7 +5,7 @@ var newsSettings = {
 	"url": "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=bd75295462f64e8c93b7d33b9c9895fd",
 	// "url": "https://newsapi.org/v2/everything?domains=techcrunch.com,news.google.com,politico.com,nextbigfuture.com,reddit.com/r/all,wsj.com&country=us&apiKey=bd75295462f64e8c93b7d33b9c9895fd",
 	"method": "Get",
-	"headers": "{Access-Control-Allow-Origin: *}",
+	"headers": {"Access-Control-Allow-Origin": "*", "X-Requested-With":"XMLHttpRequest"},
 	"data": "{}"
   }
   
