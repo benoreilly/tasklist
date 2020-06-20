@@ -1,11 +1,4 @@
 
-// let newsTitle = document.getElementById('news-title');
-// let newsDesc = document.getElementById('news-description');
-// let newsUrl = document.getElementById('news-url');
-// let newsImg = document.getElementById('news-img');
-// const newsData = document.getElementById('news-data');
-
-
 var newsSettings = {
 	"async": true,
 	"crossDomain": true,
@@ -15,63 +8,28 @@ var newsSettings = {
 	"data": "{}"
   }
   
-  $.ajax(newsSettings).done(function (responseText) {
-	  var articleArr = responseText.articles;
+  $.ajax(newsSettings).done(function (response) {
+	  var data = response.articles;
+	  console.log(data);
 	  var newsSection = document.getElementById('news-results');
-	
-
 	  newsSection.innerHTML = `
-	  <div class="container">
-		  <div class="row">
-			  <div class="col s12">
-				  <div class="card-panel news-card">
-					  <div class="news-data">
-					  	
-						  <div class="news-data-content">
-						  
-					  </div>  
+		<div class="container">
+		<div class="row">
+		<div class="col s12">
+		  ${data.map(article => `
+			  <div class="card-panel news-card">
+				  <div class="news-text-content"
+				  	<h5 class="news-title"><a href="${article.url}" target="_blank">${article.title}</a></h5><h6 class="news-descrip">${article.description}</h6>
 					</div>
-				</div>
-			</div>
+				  <img src="${article.urlToImage}" class="news-img">
+			  </div>`
+			)
+			.sort()
+			.join('')}
 		</div>
-	
+		</div>
+		</div>
 	  `;
-	 
-	  for (let i = 0; i < articleArr.length; i++){
-		var newsData = document.getElementById('news-data');
-		var newsDataContent = document.querySelector('.news-data-content');
-		
-
-		var newsHeader = document.createElement('h5');
-		newsHeader.className = "news-title";
-		let dataTitle = articleArr[i].title;
-
-		var newsLink = document.createElement('a');
-		newsLink.setAttribute('href', articleArr[i].url);
-		newsLink.setAttribute('target', '_blank');
-		newsLink.innerText = dataTitle;
-
-		newsHeader.appendChild(newsLink);
-		newsDataContent.appendChild(newsHeader);
-
-		var newsDescription = document.createElement('h6');
-		newsDescription.ClassName = "news-description";
-		let dataDesc = articleArr[i].description;
-		newsDescription.innerText = dataDesc;
-		newsDataContent.appendChild(newsDescription);
-
-
-		var newsImgContainer = document.createElement('div');
-		newsImgContainer.className = "news-data-content-img";
-
-		var newsImg = document.createElement('img');
-		newsImg.ClassName = "news-img";
-		let dataImg = articleArr[i].urlToImage;
-		newsImg.setAttribute('src', dataImg)
-
-		newsImgContainer.appendChild(newsImg);
-		newsDataContent.appendChild(newsImgContainer);
-	  }	
 });
 
 
