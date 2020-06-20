@@ -18,11 +18,11 @@ var newsSettings = {
 		<div class="col s12">
 		  ${data.map(article => `
 			  <div class="card-panel news-card">
+				  <div class="news-img-container"><img src="${article.urlToImage}" class="news-img"></div> 
 				  <div class="news-text-content">
 					  <h5 class="news-title"><a href="${article.url}" target="_blank">${article.title}</a></h5>
 					  <h6 class="news-descrip">${article.description}</h6>
-					</div>
-					<div class="news-img-container"><img src="${article.urlToImage}" class="news-img"></div>  
+					</div> 
 			  </div>`
 			)
 			.sort()
@@ -34,9 +34,3 @@ var newsSettings = {
 });
 
 
-
-jQuery.ajaxPrefilter(function(options) {
-	if (options.crossDomain && jQuery.support.cors) {
-		options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-	}
-});
