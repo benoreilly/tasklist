@@ -6,7 +6,7 @@ const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 const modalTrigger = document.querySelector('.modal-trigger');
-const checked = $('#priCheck').is(':checked');
+// const checked = $('#priCheck').is(':checked');
 //const sortNameBtn = document.getElementById('sortBtn');
 // const draggable_list = document.getElementById('draggable-list')
 
@@ -76,6 +76,9 @@ function getTasks(){
         if(task.includes("!")){ 
             div.className = 'collection-item slideIn hoverable taskItem isChecked';
             task = task.replace('!', ''); 
+        } else if (task.includes("#")) {
+            div.className = 'collection-item slideIn hoverable taskItem isChecked wisdom_check';
+            task = task.replace('#', ''); 
         } else {
             div.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
@@ -125,12 +128,14 @@ function addTask(e){
         
         // add class to it
         var checked = $('#priCheck').is(':checked');
+        var wisdomChecked = $('#wisdomCheck').is(':checked');
         if(checked){ 
             div.className = 'collection-item slideIn hoverable taskItem isChecked'; 
+        } else if (wisdomChecked){
+            div.className = 'collection-item slideIn hoverable taskItem isChecked wisdom_check';
         } else {
             div.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
-
         //create span or link for task
       
         if(!taskInput.value.includes('https://')){
@@ -172,10 +177,10 @@ function addTask(e){
         
         if (checked == true){
             var f = taskInput.value +"!";    
-        } else {
+        } else if (wisdomChecked == true) {
+            f = taskInput.value +"#";
+        } else
             f = taskInput.value;
-        }
-
     
         var x = storeTaskInLocalStorage(f);
         
@@ -187,6 +192,7 @@ function addTask(e){
 
     
     $('#priCheck').prop('checked', false);
+    $('#wisdomCheck').prop('checked', false);
       
 }
 
@@ -225,27 +231,25 @@ function removeTask(e){
 
 // Remove from local storage function
 
-function removeTaskFromLocalStorage(taskItem){
-    
+function removeTaskFromLocalStorage(taskItem){ 
     let tasks;
     if(localStorage.getItem('tasks') === null){
         tasks = [];    
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
- 
     var taskPriCheck = taskItem.firstChild.textContent + "!";
+    var taskWisCheck = taskItem.firstChild.textContent + "#";
     tasks.forEach(function(task, index){
-        if(taskItem.firstChild.textContent === task) {
+        if (taskItem.firstChild.textContent === task) {
+          tasks.splice(index, 1);
+        } else if (taskPriCheck === task){
             tasks.splice(index, 1);
-        } 
-        else if (taskPriCheck === task){
+        } else if (taskWisCheck === task){
             tasks.splice(index, 1);
         }
     });
-
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    
 }
 
 // Init modal
@@ -259,8 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
 //Open clear task modal
 
 function openModal(e){
-    //var instance = M.Modal.getInstance(elem);
-    //this.open();   
     e.preventDefault();  
 }
 
@@ -322,3 +324,4 @@ $(document).ready(function(){
 		options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
 	}
 });
+

@@ -60,12 +60,23 @@ span.hp-Icon i.tiny {
   }
 }
 
+.priorityCheck,
+.wisdom-check{
+  display: inline-block;
+  margin-left: 6px;
+}
+
 .collection .taskItem {
     background-color: #eee;
 }
 
 .collection .taskItem.isChecked {
   background-color: rgba(201, 68, 58, 0.5);
+  font-weight: 500;
+}
+
+.collection .taskItem.isChecked.wisdom_check {
+  background-color:rgba(21, 101, 192, 0.5);
   font-weight: 500;
 }
 
