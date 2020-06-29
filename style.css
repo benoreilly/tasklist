@@ -3,7 +3,6 @@ body {
   overflow-x: hidden !important;
 }
 
-
 .container {
     margin-top: 60px;
 }
@@ -296,4 +295,9 @@ input::-webkit-inner-spin-button {
   max-width: 50px;
   max-height: 50px;
   margin-right: 12px;
+}
+
+.music-img-container img {
+  height: 50px;
+  width: auto;
 }
