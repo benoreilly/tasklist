@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 mark {
@@ -275,29 +275,128 @@ input::-webkit-inner-spin-button {
   font-size: .975rem;
 }
 
+.music-card {
+  border-radius: 15px;
+}
+
 .music-container {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-around;
+  padding: 5px 5px;
+  position: relative;
+  z-index: 10;
 }
 
 .music-navigation {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+  top: 15px;
 }
 
-.music-navigation a{
-  margin: 2px;
+.action-btn {
+  background-color: transparent;
+  border: 0;
+  color: #7e6585;
+  cursor: pointer;
+}
+
+.action-btn.action-btn-big {
+  color: #7e6585;
+  font-size: 30px;
+}
+
+.music-navigation a {
+  margin: 10px;
 }
 
 .music-img-container {
-  display: flex;
-  align-self: center;
-  max-width: 50px;
-  max-height: 50px;
-  margin-right: 12px;
+  /* display: inline; */
+  position: relative;
+  margin: 0 20px 0 0;
+  width: 70px;
+  top: 15px;
+}
+
+.music-img-container::after {
+  content: '';
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #e3e3e3;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, 10%);
 }
 
 .music-img-container img {
-  height: 50px;
-  width: auto;
+  height: 70px;
+  width: inherit;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.music-container.play .music-img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.music-info {
+  background-color: transparent;
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  width: calc(100%-40px);
+  opacity: 0;
+  padding: 10px 10px 10px 10px;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h6 {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.progress-container {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px;
+  height: 6px;
+  width: 100%;
+}
+
+.music-progress {
+  background-color: #fe8daa;
+  border-radius: 5px;
+  border: 1px solid #e3e3e3;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
 }

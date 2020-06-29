@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/nebullax.png">
   <link rel="stylesheet" href="style.css">
-  <title>Task List</title>
+  <title>Nebulist</title>
 </head>
 
 
@@ -17,34 +17,42 @@
     <section>
       <div class="container">
         <div class="row">
+          <div class="col s12 m9 l4 offset-m3 offset-l8">
+			  <div class="card-panel music-card grey lighten-3">
+				<div class="music-container" id="music_container">
+					<div class="music-info">
+						<h6 id="title"></h6>
+						<div class="progress-container" id="progress_container">
+							<div class="music-progress" id="music-progress"></div>
+						</div>
+					</div>
+					<!-- <audio controls><source src="music/Orange.mp3" id="audio" type="audio/mpeg"></audio> -->
+					<audio src="music/Orange.mp3" id="audio" type="audio/mpeg"></audio>
+					<div class="music-img-container">
+						<img alt="music-cover" id="cover" />
+					</div>
+					<div class="music-navigation">
+						<a id="prev" class="action-btn">
+							<i class="material-icons small">skip_previous</i>
+						</a>
+						<a id="play" class="action-btn action-btn-big">
+							<i class="small material-icons">play_circle_outline</i>
+						</a>
+						<a id="next" class="action-btn">
+							<i class="small material-icons">skip_next</i>
+						</a>
+					</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
           <div class="col s12">
             <div class="row">
-              <div class="music-container" id="music-container">
-                <div class="music-info">
-                  <!-- <h4 id="title"></h4>
-                  <div class="progress-container" id="progress-container">
-                    <div class="progress" id="progress"></div>
-                  </div> -->
-                </div>
-
-                <audio controls><source src="music/Orange.mp3" id="audio" type="audio/mpeg"></audio>
-
-                <div class="music-img-container">
-                  <img src="img/orange.png" alt="music-cover" id="cover" />
-                </div>
-                <!-- <div class="music-navigation">
-                  <a id="prev" class="btn action-btn">
-                    <i class="material-icons">skip_previous</i>
-                  </a>
-                  <a id="play" class="btn action-btn action-btn-big">
-                    <i class="material-icons">play_circle_outline</i>
-                  </a>
-                  <a id="next" class="btn action-btn">
-                    <i class="material-icons">skip_next</i>
-                  </a>
-                </div> -->
-              </div>
-              
               <div id="main" class="card">
                 <div class="card-content">
                   <span class="card-title">The Nebulist
@@ -63,14 +71,18 @@
                         <input type="text" name='task' id='task'>
                         <label for="task">New Task</label>
                       </div>
-                          <div class="priorityCheck">
-                            <input type="checkbox" id="priCheck" class="filled-in" checkbox="checked" />
-                            <label for="priCheck">High Priority</span>
-                          </div>
-                          <div class="wisdom-check">
-                            <input type="checkbox" id="wisdomCheck" class="filled-in" checkbox="checked" />
-                            <label for="wisdomCheck">Wisdom</span>
-                          </div> 
+                      <div class="priorityCheck">
+                        <label for="priCheck">
+                          <input type="checkbox" id="priCheck" class="filled-in" checkbox="checked" />
+                          <span>High Priority</span>
+                        </label>
+                      </div>
+                      <div class="wisdom-check">
+                        <label for="wisdomCheck">
+                          <input type="checkbox" id="wisdomCheck" class="filled-in" checkbox="checked" />
+                          <span>Wisdom</span>
+                        </label>
+                      </div> 
                     </div>
                       <input type="submit" value="Add Task" class='btn'>
                     </form>
@@ -102,30 +114,29 @@
         </div>
       </div>
     </section>
-    <section id="news-results">
-    </section>
+    <section id="news-results"></section>
    
-      <div class="pushpin pp-1 hide-on-small-only">
-          <a class="card-panel indigo pinned center valign-wrapper hoverable white-text" href="https://www.google.com" target="_blank">Google</a>
-      </div>
-      <div class="pushpin pp-2 hide-on-small-only">
-          <a class="white-text card-panel blue pinned center valign-wrapper hoverable" href="https://www.gmail.com" target="_blank">Gmail<i class="white-text material-icons">email</i></a>
-      </div>
-      <div class="pushpin pp-3 hide-on-small-only">
-          <a class="white-text card-panel green pinned center valign-wrapper hoverable" href="https://drive.google.com" target="_blank">Drive<i class="white-text material-icons">cloud</i></a>
-      </div>
-      <div class="pushpin pp-4 hide-on-small-only">
-          <a class="white-text card-panel orange pinned center valign-wrapper hoverable"" href="https://keep.google.com" target="_blank">Keep<i class="white-text material-icons">view_agenda</i></a>
-      </div>
-      <div class="pushpin pp-5 hide-on-small-only">
-          <a class="white-text card-panel red pinned center valign-wrapper hoverable" href="https://www.youtube.com" target="_blank">Youtube <i class="white-text material-icons">play_arrow</i></a>
-      </div>
-      <div class="pushpin pp-6 hide-on-small-only">
-          <a class="white-text card-panel blue pinned center valign-wrapper hoverable" href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla</a>
-      </div>
+	<div class="pushpin pp-1 hide-on-small-only">
+		<a class="card-panel indigo pinned center valign-wrapper hoverable white-text" href="https://www.google.com" target="_blank">Google</a>
+	</div>
+	<div class="pushpin pp-2 hide-on-small-only">
+		<a class="white-text card-panel blue pinned center valign-wrapper hoverable" href="https://www.gmail.com" target="_blank">Gmail<i class="white-text material-icons">email</i></a>
+	</div>
+	<div class="pushpin pp-3 hide-on-small-only">
+		<a class="white-text card-panel green pinned center valign-wrapper hoverable" href="https://drive.google.com" target="_blank">Drive<i class="white-text material-icons">cloud</i></a>
+	</div>
+	<div class="pushpin pp-4 hide-on-small-only">
+		<a class="white-text card-panel orange pinned center valign-wrapper hoverable"" href="https://keep.google.com" target="_blank">Keep<i class="white-text material-icons">view_agenda</i></a>
+	</div>
+	<div class="pushpin pp-5 hide-on-small-only">
+		<a class="white-text card-panel red pinned center valign-wrapper hoverable" href="https://www.youtube.com" target="_blank">Youtube <i class="white-text material-icons">play_arrow</i></a>
+	</div>
+	<div class="pushpin pp-6 hide-on-small-only">
+		<a class="white-text card-panel blue pinned center valign-wrapper hoverable" href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla</a>
+	</div>
     
 
-  </main>
+</main>
 
 
 
