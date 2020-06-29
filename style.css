@@ -275,3 +275,25 @@ input::-webkit-inner-spin-button {
   color: rgba(0, 0, 0, 0.625);
   font-size: .975rem;
 }
+
+.music-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.music-navigation {
+  display: flex;
+  align-items: flex-end;
+}
+
+.music-navigation a{
+  margin: 2px;
+}
+
+.music-img-container {
+  display: flex;
+  align-self: center;
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 12px;
+}
