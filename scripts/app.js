@@ -21,7 +21,7 @@ const cover = document.getElementById('cover');
 
 // Song Titles
 
-const songs = ['Orange'];
+const songs = ['Orange - Ewan Dobson', 'tDB - Pirate Funk'];
 
 // Keep track of song
 let songIndex = 0;
