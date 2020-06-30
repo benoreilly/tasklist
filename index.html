@@ -24,7 +24,7 @@
 		<section>
 			<div class="container">
 				<div class="row">
-					<div class="col s12 m10 l7 push-m2 push-l5">
+					<div class="col s12 m9 l6 offset-m3 offset-l6">
 						<div class="card-panel music-card grey lighten-3">
 							<div class="music-container" id="music_container">
 								<div class="music-info">
@@ -66,10 +66,12 @@
                                         <div class="card-title-right secondary-content">
                                             <span id="tDate"></span>
                                             <span id="tTime"></span>
-                                            <span class="weather-data" id="weather-icon"></span>
-                                            <span class="weather-data" id="weather-city"></span>
-                                            <span class="weather-data" id="weather-temp"></span>
-                                            <span class="weather-data" id="weather-description"></span>			
+                                            <span class="weather-data">
+                                                <span id="weather-icon"></span>
+                                                <span id="weather-city"></span>
+                                                <span id="weather-temp"></span>
+                                                <span id="weather-description"></span>
+                                            </span>
                                         </div>		
 									</div>
 									<div class="row">
@@ -99,14 +101,12 @@
 							</div>
 							<div class="card-action">
 								<h5 id="task-title">Your Tasks</h5>
-								<!-- <button class="btn" id="sortBtn">Sort Alphabetically</button> -->
 								<div class="input-field col s12">
 									<input type="text" name="filter" id="filter">
 									<label for="filter">Filter Tasks</label>
 								</div>
 								<div class="collection"></div>
-								<a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear
-									Tasks</a>
+                                <a href="#modal1" class="btn black modal-trigger waves-effect waves-light">Clear Tasks</a>
 							</div>
 							<!-- Modal Structure -->
 							<div id="modal1" class="modal clearTaskModal">

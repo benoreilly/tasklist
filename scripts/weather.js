@@ -40,6 +40,8 @@ loadJSON(function(response) {
         document.getElementById('weather-icon').innerHTML = '<i class="small material-icons weatherIcon">wb_cloudy</i>';
     } else if (w === "Rain" || w === "Drizzle"){
         document.getElementById('weather-icon').innerHTML = '<span class="small material-icons weatherIcon"><img src="img/weather-rainy.svg"></span>';
+    } else if (w === "Thunderstorm"){
+        document.getElementById('weather-icon').innerHTML = '<i class="small material-icons weatherIcon">flash_on</i>';
     } else {
         document.getElementById('weather-icon').innerHTML = '<i class="small material-icons weatherIcon">wb_sunny</i>';
     }
