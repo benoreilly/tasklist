@@ -1,20 +1,17 @@
 html,
 body {
   overflow-x: hidden !important;
+  font-family: Roboto;
+  font-size: 16px;
 }
 
 .container {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-mark {
-  background-color: #80cbc4 ;
-  font-weight: 600;
-  /* background: none; */
-}
 
-span.hightlight {
-  font-weight: 600;
+.card .card-content .card-header .card-title {
+    display:inline-block;
 }
 
 .card-title span,
@@ -28,7 +25,7 @@ span.hp-Icon i.tiny {
   font-size: 1.2rem;
 }
 
-.card .card-content .card-title i.weatherIcon{
+i.weatherIcon{
   line-height: 16px;
 }
 
@@ -116,7 +113,6 @@ ul.collection {
 }
 
 .slideOut {
-  /* background-color: #26a69a; */
   background-image: linear-gradient(to left,
   rgba(15, 65, 60, .9) 25%,
   rgba(15, 65, 60, .5) 50%,
@@ -275,6 +271,8 @@ input::-webkit-inner-spin-button {
   font-size: .975rem;
 }
 
+/* Music Player */
+
 .music-card {
   border-radius: 15px;
   height: 100px;
@@ -295,7 +293,8 @@ input::-webkit-inner-spin-button {
   justify-content: flex-start;
   z-index: 1;
   position: relative;
-  top: 5px;
+  top: 10px;
+  right: 15px;
 }
 
 .action-btn {
@@ -366,22 +365,22 @@ input::-webkit-inner-spin-button {
   position: absolute;
   bottom: 10px;
   left: 90px;
-  width: calc(100%-40px);
-  opacity: 0;
+  width: calc(75% - 100px);
+  opacity: .5;
   padding: 0px 10px 10px 0px;
-  transform: translateX(0%);
+  transform: translateX(40%);
   transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   z-index: 100;
 }
 
 .music-container.play .music-info {
   opacity: 1;
-  transform: translateX(50%);
+  transform: translateX(40%);
 }
 
 .music-info h6 {
   margin-top: 5px;
-  font-size: 1.1rem;
+  font-size: 0.950rem;
   font-weight: 500;
 }
 
@@ -401,4 +400,14 @@ input::-webkit-inner-spin-button {
   height: 100%;
   width: 100%;
   transition: width 0.1s linear;
+}
+
+
+mark {
+    background-color: #80cbc4;
+    font-weight: 600;
+}
+  
+span.hightlight {
+    font-weight: 600;
 }
