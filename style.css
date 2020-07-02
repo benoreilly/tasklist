@@ -92,6 +92,7 @@ i.weatherIcon {
 .collection .taskItem {
 	background-color: #eee;
 	position: relative;
+	list-style: none;
 }
 
 .collection .taskItem.isChecked {
