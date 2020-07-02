@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 // Define UI vars
 
@@ -62,7 +62,7 @@ function pauseSong() {
 function prevSong() {
     songIndex--;
 
-    if(songIndex < 0){
+    if (songIndex < 0) {
         songIndex = songs.length - 1;
     }
 
@@ -75,7 +75,7 @@ function prevSong() {
 function nextSong() {
     songIndex++;
 
-    if(songIndex > songs.length - 1){
+    if (songIndex > songs.length - 1) {
         songIndex = 0;
     }
 
@@ -87,7 +87,10 @@ function nextSong() {
 // Update progress bar
 
 function updateProgress(e) {
-    const {duration, currentTime} = e.srcElement;
+    const {
+        duration,
+        currentTime
+    } = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
 }
@@ -106,7 +109,7 @@ function setProgress(e) {
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
 
-    if(isPlaying) {
+    if (isPlaying) {
         pauseSong();
     } else {
         playSong();
@@ -139,9 +142,13 @@ myTimer();
 var timeVar = setInterval(myTimer, 1000);
 
 function myTimer() {
-let d = new Date();
-let t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-var tTime = document.getElementById('tTime').innerText = t;
+    let d = new Date();
+    let t = d.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    var tTime = document.getElementById('tTime');
+    tTime.innerText = t;
 }
 
 
@@ -167,93 +174,94 @@ function loadEventListeners() {
 
 // Get Tasks from LS
 
-function getTasks(){
+function getTasks() {
     let tasks;
-    if(localStorage.getItem('tasks') === null){
+    if (localStorage.getItem('tasks') === null) {
         tasks = [];
-        
+
     } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));        
+        tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-    tasks.sort(function(a,b) {
+    tasks.sort(function (a, b) {
         var taskA = a.toUpperCase();
         var taskB = b.toUpperCase();
-        if( taskA < taskB) 
+        if (taskA < taskB)
             return 1;
-        if( taskA > taskB) 
+        if (taskA > taskB)
             return -1;
     });
-    tasks.forEach(function(task){
-        
+    tasks.forEach(function (task) {
+
         // create li element
         const div = document.createElement('div');
         // add class to it
-        if(task.includes("!")){ 
+        if (task.includes("!")) {
             div.className = 'collection-item slideIn hoverable taskItem isChecked';
-            task = task.replace('!', ''); 
+            task = task.replace('!', '');
         } else if (task.includes("#")) {
             div.className = 'collection-item slideIn hoverable taskItem isChecked wisdom_check';
-            task = task.replace('#', ''); 
+            task = task.replace('#', '');
         } else {
             div.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
 
-        if(!task.includes('https://')){
+        let splitDate = task.split('taskSubmitDate=');
+
+
+        if (!task.includes('https://')) {
             var taskItemText = document.createElement('span');
             taskItemText.className = 'taskContext context';
-            taskItemText.innerText = task;
+            taskItemText.innerText = splitDate[0];
         } else {
             var taskItemText = document.createElement('a');
             taskItemText.className = 'taskContext context task-link';
             taskItemText.setAttribute('href', task);
             taskItemText.setAttribute('target', '_blank');
             taskItemText.setAttribute('rel', 'noopener');
-            taskItemText.innerText = task;
+            taskItemText.innerText = splitDate[0];
         }
- 
-      
         div.appendChild(taskItemText);
-  
+
+        //create task timestamp
+        const taskTimeTag = document.createElement('span');
+        taskTimeTag.id = "task-timestamp";
+        taskTimeTag.innerText = splitDate[1];
+        div.appendChild(taskTimeTag);
+
         //create new link element
         const link = document.createElement('a');
-        // add class
         link.className = 'delete-item secondary-content';
-        // add icon html
         link.innerHTML = '<i class="material-icons">check_circle</i>';
-        // append the link to li
         div.appendChild(link);
-        // append li to ul
-        // let checkedList = document.querySelectorAll('li.isChecked');
+
         let notCheckedList = document.querySelectorAll('div.isNotChecked');
-        if (div.classList.contains('isChecked')){
+        if (div.classList.contains('isChecked')) {
             taskList.insertBefore(div, taskList.childNodes[0]);
         } else {
-                taskList.insertBefore(div, notCheckedList[0]);
-        }  
-    })        
+            taskList.insertBefore(div, notCheckedList[0]);
+        }
+    })
 }
 
 
 // Add task function
-
-function addTask(e){
-    if(taskInput.value !== ''){
+function addTask(e) {
+    if (taskInput.value !== '') {
         // create li element
         const div = document.createElement('div');
-        
         // add class to it
         var checked = $('#priCheck').is(':checked');
         var wisdomChecked = $('#wisdomCheck').is(':checked');
-        if(checked){ 
-            div.className = 'collection-item slideIn hoverable taskItem isChecked'; 
-        } else if (wisdomChecked){
+        if (checked) {
+            div.className = 'collection-item slideIn hoverable taskItem isChecked';
+        } else if (wisdomChecked) {
             div.className = 'collection-item slideIn hoverable taskItem isChecked wisdom_check';
         } else {
             div.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
+
         //create span or link for task
-      
-        if(!taskInput.value.includes('https://')){
+        if (!taskInput.value.includes('https://')) {
             var taskItemText = document.createElement('span');
             taskItemText.className = 'taskContext context';
             taskItemText.innerText = taskInput.value;
@@ -267,6 +275,14 @@ function addTask(e){
         }
 
         div.appendChild(taskItemText);
+
+        //create task timestamp
+        const taskTimeTag = document.createElement('span');
+        //add id
+        taskTimeTag.id = "task-timestamp";
+        //append timestamp span 
+        div.appendChild(taskTimeTag);
+
         //create new link element
         const link = document.createElement('a');
         // add class
@@ -277,68 +293,71 @@ function addTask(e){
         div.appendChild(link);
 
         // append li to ul
-        
         let checkedList = document.querySelectorAll('div.isChecked');
         let notCheckedList = document.querySelectorAll('div.isNotChecked');
-        
-        if (div.classList.contains('isChecked')){
+
+        if (div.classList.contains('isChecked')) {
             taskList.insertBefore(div, taskList.childNodes[0]);
-        } else {	
-            taskList.insertBefore(div, notCheckedList[0]);	
+        } else {
+            taskList.insertBefore(div, notCheckedList[0]);
         }
-     
-            
+
+        let taskDate = new Date();
+        let taskDateStamp = taskDate.toLocaleDateString('en-US');
+        let taskTimeStamp = document.getElementById('task-timestamp');
+        taskTimeStamp.innerText = taskDateStamp;
+
+
         // store in local storage
-        
-        if (checked == true){
-            var f = taskInput.value +"!";    
+
+        if (checked == true) {
+            var taskValue = taskInput.value + "!" + " " + "taskSubmitDate=" + taskDateStamp;
         } else if (wisdomChecked == true) {
-            f = taskInput.value +"#";
-        } else
-            f = taskInput.value;
-    
-        var x = storeTaskInLocalStorage(f);
-        
+            taskValue = taskInput.value + "#" + " " + "taskSubmitDate=" + taskDateStamp;
+        } else {
+            taskValue = taskInput.value + " " + "taskSubmitDate=" + taskDateStamp;
+        }
+        var taskValueStorage;
+        taskValueStorage = storeTaskInLocalStorage(taskValue);
+
         // clear input
         taskInput.value = '';
     }
 
     e.preventDefault();
 
-    
     $('#priCheck').prop('checked', false);
     $('#wisdomCheck').prop('checked', false);
-      
-}
 
+}
 
 // Store in local storage
 
-function storeTaskInLocalStorage(task){
+function storeTaskInLocalStorage(task) {
     let tasks;
-    if(localStorage.getItem('tasks') === null){
-        tasks = [];    
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-    
+
     tasks.push(task);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    
+
 }
 // Remove task function
 
-function removeTask(e){
-    if(e.target.parentElement.classList.contains('delete-item')){
+function removeTask(e) {
+    if (e.target.parentElement.classList.contains('delete-item')) {
         e.target.parentElement.parentElement.classList.toggle('slideOut');
         setTimeout(() => {
-            e.target.parentElement.parentElement.remove(); 
+            e.target.parentElement.parentElement.remove();
         }, 500);
-    }  
-    
+    }
+
     // remove from local storage
-    
+
     removeTaskFromLocalStorage(e.target.parentElement.parentElement);
 
     e.preventDefault();
@@ -346,21 +365,21 @@ function removeTask(e){
 
 // Remove from local storage function
 
-function removeTaskFromLocalStorage(taskItem){ 
+function removeTaskFromLocalStorage(taskItem) {
     let tasks;
-    if(localStorage.getItem('tasks') === null){
-        tasks = [];    
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     var taskPriCheck = taskItem.firstChild.textContent + "!";
     var taskWisCheck = taskItem.firstChild.textContent + "#";
-    tasks.forEach(function(task, index){
+    tasks.forEach(function (task, index) {
         if (taskItem.firstChild.textContent === task) {
-          tasks.splice(index, 1);
-        } else if (taskPriCheck === task){
             tasks.splice(index, 1);
-        } else if (taskWisCheck === task){
+        } else if (taskPriCheck === task) {
+            tasks.splice(index, 1);
+        } else if (taskWisCheck === task) {
             tasks.splice(index, 1);
         }
     });
@@ -369,27 +388,27 @@ function removeTaskFromLocalStorage(taskItem){
 
 // Init modal
 
-document.addEventListener('DOMContentLoaded', function() {
-    $(document).ready(function(){
+document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function () {
         $('.modal').modal();
     });
 })
 
 //Open clear task modal
 
-function openModal(e){
-    e.preventDefault();  
+function openModal(e) {
+    e.preventDefault();
 }
 
 // Clear tasks function
 
-function clearTasks(e){
- 
+function clearTasks(e) {
+
     // Method A
     // taskList.innerHTML = '';
 
     // Method B - faster
-    while(taskList.firstChild) {
+    while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
     // while there is still a first child (there is still something in the list) then remove it
@@ -400,43 +419,42 @@ function clearTasks(e){
     localStorage.clear();
 }
 // Filter tasks
-function filterTasks(e){
+function filterTasks(e) {
     const text = e.target.value.toLowerCase();
-    document.querySelectorAll('.collection-item .context').forEach(function(task){
+    document.querySelectorAll('.collection-item .context').forEach(function (task) {
         const item = task.textContent.trim();
         //if no match, it equals -1
-        if(item.toLowerCase().indexOf(text) != -1){
+        if (item.toLowerCase().indexOf(text) != -1) {
             task.parentElement.style.display = 'block';
         } else {
             task.parentElement.style.display = 'none';
-        }      
+        }
     });
 
-        function markFunction(){
-            $(".context").mark(text);
-                 
+    function markFunction() {
+        $(".context").mark(text);
+
         // unmark
-            $(".context").unmark({
-                done: function(){
-                    $(".context").mark(text);
-                }
-            })
-        }
-        markFunction();
+        $(".context").unmark({
+            done: function () {
+                $(".context").mark(text);
+            }
+        })
+    }
+    markFunction();
 }
-        
+
 // Init pushpin
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.pushpin').pushpin();
-  });
-        
+});
+
 
 //CORS
 
-  jQuery.ajaxPrefilter(function(options) {
-	if (options.crossDomain && jQuery.support.cors) {
-		options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-	}
+jQuery.ajaxPrefilter(function (options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
 });
-
