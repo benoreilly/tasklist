@@ -89,7 +89,8 @@ i.weatherIcon {
 	margin-left: 6px;
 }
 
-.collection .taskItem {
+.collection .taskItem,
+.collection-two .taskItem {
 	background-color: #eee;
 	position: relative;
 	list-style: none;
@@ -113,20 +114,28 @@ i.weatherIcon {
 
 span#task-timestamp {
 	opacity: 0.6;
+	font-size: .85rem;
 	border: 1px solid #e76e6e;
 	border-radius: 6px;
 	padding: 2px;
 	margin: 4px;
-	position: absolute;
+	/* position: absolute; */
 	right: 8%;
 	top: 0;
+}
+
+@media screen and (max-width: 800px){
+	span#task-timestamp {
+		font-size: .7rem;
+	}
 }
 
 .priorityCheck {
 	margin-bottom: 10px;
 }
 
-ul.collection {
+ul.collection,
+ul.collection-two {
 	margin-bottom: 20px !important;
 }
 

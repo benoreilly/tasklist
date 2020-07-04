@@ -4,10 +4,12 @@
 
 const form = document.querySelector('#task-form');
 const taskList = document.querySelector('.collection');
+// const listTwo = document.querySelector('.collection-two');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 const modalTrigger = document.querySelector('.modal-trigger');
+const wisdomChecked = $('#wisdomCheck').is(':checked');
 
 const musicContainer = document.getElementById('music_container');
 const playBtn = document.getElementById('play');
@@ -194,6 +196,7 @@ function getTasks() {
 
         // create li element
         const li = document.createElement('li');
+        var wisdomChecked = $('#wisdomCheck').is(':checked');
         // add class to it
         if (task.includes("!")) {
             li.className = 'collection-item slideIn hoverable taskItem isChecked';
@@ -235,9 +238,13 @@ function getTasks() {
         li.appendChild(link);
 
         let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        // if (wisdomChecked){
+        //     listTwo.appendChild(li);
+        // }
         if (li.classList.contains('isChecked')) {
             taskList.insertBefore(li, taskList.childNodes[0]);
-        } else {
+        } 
+        else if (li.classList.contains('isNotChecked')) {
             taskList.insertBefore(li, notCheckedList[0]);
         }
     })
@@ -289,18 +296,24 @@ function addTask(e) {
         // add class
         link.className = 'delete-item secondary-content';
         // add icon html
-        link.innerHTML = '<i class="material-icons">check_circle</i>';
+        link.innerHTML = '<i class="material-icons" id="delete-target">check_circle</i>';
         // append the link to li
         li.appendChild(link);
 
         // append li to ul
-        let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        // var notCheckedList = document.querySelectorAll('li.isNotChecked');
 
-        if (li.classList.contains('isChecked')) {
-            taskList.insertBefore(li, taskList.childNodes[0]);
-        } else if (li.classList.contains('isNotChecked')) {
-            taskList.insertBefore(li, notCheckedList[0]);
-        }
+        // if (li.classList.contains('isChecked')) {
+            
+        //     taskList.insertBefore(li, taskList.childNodes[0]);
+        // } 
+        // else if (li.classList.contains('isNotChecked')) {
+            
+        //     taskList.insertBefore(li, notCheckedList[0]);
+        // }
+
+        taskList.insertBefore(li, taskList.childNodes[0]);
+        
 
         let taskDate = new Date();
         let taskDateStamp = taskDate.toLocaleDateString('en-US');
@@ -374,10 +387,15 @@ function removeTaskFromLocalStorage(taskItem) {
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-    var taskPriCheck = taskItem.firstChild.textContent + "!";
-    var taskWisCheck = taskItem.firstChild.textContent + "#";
+
     tasks.forEach(function (task, index) {
-        if (taskItem.firstChild.textContent === task) {
+        
+        var dateSplitter = task.split('taskSubmitDate=');
+        var taskAddDate = taskItem.firstChild.innerText + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskPriCheck = taskItem.firstChild.innerText + "!" + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskWisCheck = taskItem.firstChild.innerText + "#" + " " + 'taskSubmitDate=' + dateSplitter[1];
+        // console.log(taskAddDate);
+        if (taskAddDate === task) {
             tasks.splice(index, 1);
         } else if (taskPriCheck === task) {
             tasks.splice(index, 1);
