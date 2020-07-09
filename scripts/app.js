@@ -391,11 +391,12 @@ function removeTaskFromLocalStorage(taskItem) {
     tasks.forEach(function (task, index) {
         
         var dateSplitter = task.split('taskSubmitDate=');
-        var taskAddDate = taskItem.firstChild.innerText.trim() + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskAddDate;
+        taskAddDate = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + " " + 'taskSubmitDate=' + dateSplitter[1];
         
-        var taskPriCheck = taskItem.firstChild.innerText.trim() + "!" + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskPriCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "!" + " " + 'taskSubmitDate=' + dateSplitter[1];
        
-        var taskWisCheck = taskItem.firstChild.innerText.trim() + "#" + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskWisCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "#" + " " + 'taskSubmitDate=' + dateSplitter[1];
       
         if (taskAddDate === task) {
             tasks.splice(index, 1);
