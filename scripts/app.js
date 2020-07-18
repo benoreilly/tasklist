@@ -218,10 +218,10 @@ function getTasks() {
         } else {
             var taskItemText = document.createElement('a');
             taskItemText.className = 'taskContext context task-link';
-            taskItemText.setAttribute('href', task);
             taskItemText.setAttribute('target', '_blank');
             taskItemText.setAttribute('rel', 'noopener');
             taskItemText.innerText = splitDate[0];
+            taskItemText.setAttribute('href', splitDate[0]);
         }
         li.appendChild(taskItemText);
 
