@@ -198,12 +198,12 @@ function getTasks() {
         const li = document.createElement('li');
         var wisdomChecked = $('#wisdomCheck').is(':checked');
         // add class to it
-        if (task.includes("!")) {
+        if (task.includes("key=!!")) {
             li.className = 'collection-item slideIn hoverable taskItem isChecked';
-            task = task.replace('!', '');
-        } else if (task.includes("#")) {
+            task = task.replace('key=!!', '');
+        } else if (task.includes("key=!$")) {
             li.className = 'collection-item slideIn hoverable taskItem isChecked wisdom_check';
-            task = task.replace('#', '');
+            task = task.replace('key=!$', '');
         } else {
             li.className = 'collection-item slideIn hoverable taskItem isNotChecked';
         }
@@ -324,9 +324,9 @@ function addTask(e) {
         // store in local storage
 
         if (checked == true) {
-            var taskValue = taskInput.value + "!" + " " + "taskSubmitDate=" + taskDateStamp;
+            var taskValue = taskInput.value + "key=!!" + " " + "taskSubmitDate=" + taskDateStamp;
         } else if (wisdomChecked == true) {
-            taskValue = taskInput.value + "#" + " " + "taskSubmitDate=" + taskDateStamp;
+            taskValue = taskInput.value + "key=!$" + " " + "taskSubmitDate=" + taskDateStamp;
         } else {
             taskValue = taskInput.value + " " + "taskSubmitDate=" + taskDateStamp;
         }
@@ -394,9 +394,9 @@ function removeTaskFromLocalStorage(taskItem) {
         var taskAddDate;
         taskAddDate = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + " " + 'taskSubmitDate=' + dateSplitter[1];
         
-        var taskPriCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "!" + " " +  'taskSubmitDate=' + dateSplitter[1];
+        var taskPriCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "key=!!" + " " +  'taskSubmitDate=' + dateSplitter[1];
        
-        var taskWisCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "#" + " " + 'taskSubmitDate=' + dateSplitter[1];
+        var taskWisCheck = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + "key=!$" + " " + 'taskSubmitDate=' + dateSplitter[1];
       
         if (taskAddDate === task) {
             tasks.splice(index, 1);
