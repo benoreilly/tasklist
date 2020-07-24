@@ -5,8 +5,33 @@ body {
 	font-size: 16px;
 }
 
+html {
+	--scrollbarBG: #CFD8DC;
+	--thumbBG: #90A4AE;
+}
+body::-webkit-scrollbar {
+width: 15px;
+}
+body {
+scrollbar-width: thin;
+scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+background-color: var(--thumbBG) ;
+border-radius: 6px;
+border: 3px solid var(--scrollbarBG);
+}
+
 .container {
 	margin-top: 40px;
+}
+
+.app-container {
+	width: 85%;
+	max-width: 1480px;
 }
 
 .card .card-content .card-header .card-title {
@@ -46,13 +71,6 @@ i.weatherIcon {
 	margin: 4px;
 }
 
-/* #tTime::after,
-#tDate::after {
-	content: " | ";
-	font-size: 2rem;
-	line-height: 16px;
-} */
-
 @media screen and (max-width: 1080px) {
 
 	#tTime,
@@ -63,7 +81,6 @@ i.weatherIcon {
 }
 
 @media screen and (max-width: 700px) {
-
 	#tTime,
 	#tDate {
 		font-size: 0.75rem;
@@ -71,16 +88,36 @@ i.weatherIcon {
 	}
 }
 
-/* @media screen and (max-width: 1080px){
-	#tTime::after {
-		content: "";
-	}
-} */
-
 @media screen and (max-width: 1080px) {
 	.weather-data {
 		display: none;
 	}
+}
+
+.principles-card {
+	border-radius: 12px;
+}
+
+/* .principles-card .principles-collection {
+	max-height: 600px; 
+	overflow-y: scroll;
+} */
+
+.principles-card *{
+	padding: 4px;
+}
+
+.principles-card .card-title{
+	margin-top: 10px;
+}
+
+.principles-card li{
+	font-size: 0.875rem;
+	line-height: 1.5rem;
+	padding: 10px 20px;
+	margin: 0;
+	border-bottom: 1px solid #e0e0e0;
+	font-weight: 500;
 }
 
 .priorityCheck,
@@ -119,7 +156,6 @@ span#task-timestamp {
 	border-radius: 6px;
 	padding: 2px;
 	margin: 4px;
-	/* position: absolute; */
 	right: 8%;
 	top: 0;
 }
@@ -477,4 +513,21 @@ mark {
 
 span.hightlight {
 	font-weight: 600;
+}
+
+
+.chev-up {
+	transform: rotate(180deg);
+	animation: chev-rotate 500ms linear normal ;
+}
+
+@keyframes chev-rotate {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
 }

@@ -223,6 +223,7 @@ function getTasks() {
             taskItemText.innerText = splitDate[0];
             taskItemText.setAttribute('href', splitDate[0]);
         }
+
         li.appendChild(taskItemText);
 
         //create task timestamp
@@ -248,6 +249,17 @@ function getTasks() {
             taskList.insertBefore(li, notCheckedList[0]);
         }
     })
+
+    var taskLink = document.getElementsByClassName('task-link');
+    if (taskLink) {
+        tasks.forEach(function (task){
+            var taskURL = task.innerText;
+            $('a.task-link').click(function() {
+                window.open(taskURL);
+                return false;
+            })
+        });
+    }
 }
 
 
@@ -343,7 +355,6 @@ function addTask(e) {
     $('#wisdomCheck').prop('checked', false);
 
 }
-
 
 
 // Store in local storage
@@ -467,10 +478,18 @@ function filterTasks(e) {
     markFunction();
 }
 
+
+
+
 // Init pushpin
 
 $(document).ready(function () {
     $('.pushpin').pushpin();
+    $('.barlow-chev').click(function() {
+        $('.barlow').slideToggle("300");
+        $('img.barlow-chev').toggleClass('chev-up');
+        event.stopPropagation;
+    })
 });
 
 
