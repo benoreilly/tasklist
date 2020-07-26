@@ -260,37 +260,47 @@ input::-webkit-inner-spin-button {
 
 /* Pushpins */
 
-.pushpin.pp-1 {
-	top: 50px !important;
+.pushpin {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	left: 1px;
+	padding: 10px;
 }
 
-.pushpin.pp-2 {
-	top: 125px !important;
+.pp-google,
+.pp-gmail,
+.pp-drive,
+.pp-keep,
+.pp-youtube,
+.pp-mozilla {
+  margin: 0px;
+  padding: 15px;
 }
 
-.pushpin.pp-3 {
-	top: 200px !important;
+.pp-google img,
+.pp-gmail img,
+.pp-drive img,
+.pp-keep img,
+.pp-youtube img,
+.pp-mozilla img {
+	width: 30px;
+	height: 30px;
+	transition: 0.4s;
 }
 
-.pushpin.pp-4 {
-	top: 275px !important;
+.pp-google img:hover,
+.pp-gmail img:hover,
+.pp-drive img:hover,
+.pp-keep img:hover,
+.pp-youtube img:hover,
+.pp-mozilla img:hover {
+	height: 52px;
+	width: 52px;
 }
 
-.pushpin.pp-5 {
-	top: 350px !important;
-}
 
-.pushpin.pp-6 {
-	top: 425px !important;
-}
-
-.pushpin .card-panel {
-	height: 40px;
-}
-
-.pushpin i {
-	margin-left: 5px;
-}
 
 /* News */
 

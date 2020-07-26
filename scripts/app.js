@@ -483,8 +483,13 @@ function filterTasks(e) {
 
 // Init pushpin
 
+
+
 $(document).ready(function () {
-    $('.pushpin').pushpin();
+    $('.pushpin').pushpin({
+        top: 0,
+        offset: 250
+    });
     $('.barlow-chev').click(function() {
         $('.barlow').slideToggle("300");
         $('img.barlow-chev').toggleClass('chev-up');
