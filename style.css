@@ -291,7 +291,7 @@ input::-webkit-inner-spin-button {
 .pp-mozilla img {
 	width: 30px;
 	height: 30px;
-	transition: scale 0.3s;
+	transition: 0.3s;
 }
 
 .pp-google img:hover,
@@ -300,9 +300,7 @@ input::-webkit-inner-spin-button {
 .pp-keep img:hover,
 .pp-youtube img:hover,
 .pp-mozilla img:hover {
-	/* height: 52px;
-	width: 52px; */
-	scale: 1.5;
+	transform: scale(1.5);
 }
 
 
