@@ -34,9 +34,6 @@ border: 3px solid var(--scrollbarBG);
 	max-width: 1480px;
 }
 
-.card .card-content .card-header .card-title {
-	display: inline-block;
-}
 
 @media screen and (max-width: 700px) {
 
@@ -261,6 +258,12 @@ input::-webkit-inner-spin-button {
 
 /* Pushpins */
 
+.pin-wrapper {
+	position: fixed;
+	left: 0px;
+	top: 150px;
+}
+
 .pushpin {
 	display: flex;
 	flex-direction: column;
@@ -288,7 +291,7 @@ input::-webkit-inner-spin-button {
 .pp-mozilla img {
 	width: 30px;
 	height: 30px;
-	transition: 0.4s;
+	transition: 0.3s;
 }
 
 .pp-google img:hover,
@@ -297,8 +300,9 @@ input::-webkit-inner-spin-button {
 .pp-keep img:hover,
 .pp-youtube img:hover,
 .pp-mozilla img:hover {
-	height: 52px;
-	width: 52px;
+	/* height: 52px;
+	width: 52px; */
+	scale: 1.5;
 }
 
 

@@ -333,8 +333,6 @@ function addTask(e) {
         taskTimeStamp.innerText = taskDateStamp;
 
 
-        // store in local storage
-
         if (checked == true) {
             var taskValue = taskInput.value + "key=!!" + " " + "taskSubmitDate=" + taskDateStamp;
         } else if (wisdomChecked == true) {
@@ -486,10 +484,6 @@ function filterTasks(e) {
 
 
 $(document).ready(function () {
-    $('.pushpin').pushpin({
-        top: 0,
-        offset: 250
-    });
     $('.barlow-chev').click(function() {
         $('.barlow').slideToggle("300");
         $('img.barlow-chev').toggleClass('chev-up');
