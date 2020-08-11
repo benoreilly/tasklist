@@ -4,7 +4,6 @@
 
 const form = document.querySelector('#task-form');
 const taskList = document.querySelector('.collection');
-// const listTwo = document.querySelector('.collection-two');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 // const taskInput = document.querySelector('#task');
@@ -397,6 +396,10 @@ function removeTaskFromLocalStorage(taskItem) {
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
+
+    var deleteMe = tasks[18];
+    deleteMe;
+
 
     tasks.forEach(function (task, index) {
         
