@@ -92,9 +92,20 @@ i.weatherIcon {
 }
 
 .principles-card {
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	width: 25%;
 	border-radius: 12px;
 }
 
+.barlow-ani {
+	transition: 0.85s;
+}
+
+.principles-card img{
+	float: right;
+}
 
 .principles-card *{
 	padding: 4px;

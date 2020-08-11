@@ -479,16 +479,13 @@ function filterTasks(e) {
 
 
 
-// Init pushpin
-
-
-
 $(document).ready(function () {
     $('.barlow-chev').click(function() {
-        $('.barlow').slideToggle("300");
+        $('.barlow').slideToggle("850, linear");
         $('img.barlow-chev').toggleClass('chev-up');
-        event.stopPropagation;
-    })
+        $('#output-card, #input-card').toggleClass('l12');
+         event.stopPropagation;
+    });
 });
 
 
