@@ -398,7 +398,6 @@ function removeTaskFromLocalStorage(taskItem) {
     }
 
     var deleteMe = tasks[18];
-    deleteMe;
 
 
     tasks.forEach(function (task, index) {
@@ -416,6 +415,8 @@ function removeTaskFromLocalStorage(taskItem) {
         } else if (taskPriCheck === task) {
             tasks.splice(index, 1);
         } else if (taskWisCheck === task) {
+            tasks.splice(index, 1);
+        } else if (deleteMe === task) {
             tasks.splice(index, 1);
         }
     });
