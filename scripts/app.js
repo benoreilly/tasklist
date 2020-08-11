@@ -7,7 +7,8 @@ const taskList = document.querySelector('.collection');
 // const listTwo = document.querySelector('.collection-two');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
-const taskInput = document.querySelector('#task');
+// const taskInput = document.querySelector('#task');
+const taskInput = document.querySelector('#textarea');
 const modalTrigger = document.querySelector('.modal-trigger');
 const wisdomChecked = $('#wisdomCheck').is(':checked');
 
