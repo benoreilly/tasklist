@@ -397,11 +397,11 @@ function removeTaskFromLocalStorage(taskItem) {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 
-    var deleteMe = tasks[18];
+    
 
 
     tasks.forEach(function (task, index) {
-        
+        var deleteMe = tasks[18];
         var dateSplitter = task.split('taskSubmitDate=');
         var taskAddDate;
         taskAddDate = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + " " + 'taskSubmitDate=' + dateSplitter[1];
