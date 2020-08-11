@@ -397,11 +397,8 @@ function removeTaskFromLocalStorage(taskItem) {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 
-    
-
-
     tasks.forEach(function (task, index) {
-        var deleteMe = tasks[18];
+        
         var dateSplitter = task.split('taskSubmitDate=');
         var taskAddDate;
         taskAddDate = taskItem.firstChild.innerText == undefined ? '' : taskItem.firstChild.innerText.trim() + " " + 'taskSubmitDate=' + dateSplitter[1];
@@ -416,9 +413,7 @@ function removeTaskFromLocalStorage(taskItem) {
             tasks.splice(index, 1);
         } else if (taskWisCheck === task) {
             tasks.splice(index, 1);
-        } else if (deleteMe === task) {
-            tasks.splice(index, 1);
-        }
+        } 
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
