@@ -92,6 +92,7 @@ i.weatherIcon {
 }
 
 .principles-card {
+	display: block;
 	position: absolute;
 	right: 5%;
 	top: 5%;
@@ -100,7 +101,7 @@ i.weatherIcon {
 }
 
 .barlow-ani {
-	transition: 0.85s;
+	transition: 1s;
 }
 
 .principles-card img{

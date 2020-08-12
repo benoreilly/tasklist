@@ -6,8 +6,8 @@ const form = document.querySelector('#task-form');
 const taskList = document.querySelector('.collection');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
-// const taskInput = document.querySelector('#task');
-const taskInput = document.querySelector('#textarea');
+const taskInput = document.querySelector('#task');
+// const taskInput = document.querySelector('#textarea');
 const modalTrigger = document.querySelector('.modal-trigger');
 const wisdomChecked = $('#wisdomCheck').is(':checked');
 
@@ -481,7 +481,7 @@ function filterTasks(e) {
 
 $(document).ready(function () {
     $('.barlow-chev').click(function() {
-        $('.barlow').slideToggle("850, linear");
+        $('.barlow').slideToggle(300, "linear");
         $('img.barlow-chev').toggleClass('chev-up');
         $('#output-card, #input-card').toggleClass('l12');
          event.stopPropagation;
