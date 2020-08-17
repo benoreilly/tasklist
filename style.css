@@ -1,7 +1,7 @@
 html,
 body {
 	overflow-x: hidden !important;
-	font-family: Roboto;
+	font-family: Google Sans, Raleway, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 16px;
 }
 
@@ -34,6 +34,9 @@ border: 3px solid var(--scrollbarBG);
 	max-width: 1480px;
 }
 
+.card-title.neb-title {
+	display: inline-block !important;
+}
 
 @media screen and (max-width: 700px) {
 
@@ -89,6 +92,11 @@ i.weatherIcon {
 	.weather-data {
 		display: none;
 	}
+}
+
+.btn.add-btn {
+	font-weight: 500;
+	text-transform: none;
 }
 
 .principles-card {
