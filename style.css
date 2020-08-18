@@ -149,6 +149,7 @@ i.weatherIcon {
 	background-color: #eee;
 	position: relative;
 	list-style: none;
+	word-break: break-word;
 }
 
 .collection .taskItem.isChecked {
