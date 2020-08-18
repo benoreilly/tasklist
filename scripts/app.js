@@ -238,16 +238,18 @@ function getTasks() {
         link.innerHTML = '<i class="material-icons">check_circle</i>';
         li.appendChild(link);
 
-        let notCheckedList = document.querySelectorAll('li.isNotChecked');
-        // if (wisdomChecked){
-        //     listTwo.appendChild(li);
+        // let notCheckedList = document.querySelectorAll('li.isNotChecked');
+        // // if (wisdomChecked){
+        // //     listTwo.appendChild(li);
+        // // }
+        // if (li.classList.contains('isChecked')) {
+        //     taskList.insertBefore(li, taskList.childNodes[0]);
+        // } 
+        // else if (li.classList.contains('isNotChecked')) {
+        //     taskList.insertBefore(li, notCheckedList[0]);
         // }
-        if (li.classList.contains('isChecked')) {
-            taskList.insertBefore(li, taskList.childNodes[0]);
-        } 
-        else if (li.classList.contains('isNotChecked')) {
-            taskList.insertBefore(li, notCheckedList[0]);
-        }
+
+        taskList.insertBefore(li, taskList.childNodes[0]);
     })
 
     var taskLink = document.getElementsByClassName('task-link');

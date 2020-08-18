@@ -163,9 +163,6 @@ i.weatherIcon {
 	font-weight: 500;
 }
 
-.collection .taskItem.isChecked:last-child {
-	border-bottom: 6px solid rgba(15, 65, 60, .9) !important;
-}
 
 span#task-timestamp {
 	opacity: 0.6;
