@@ -3,6 +3,10 @@ body {
 	overflow-x: hidden !important;
 	font-family: Google Sans, Raleway, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 html {
@@ -25,13 +29,11 @@ border-radius: 6px;
 border: 3px solid var(--scrollbarBG);
 }
 
-.container {
-	margin-top: 40px;
-}
 
 .app-container {
 	width: 85%;
 	max-width: 1480px;
+	margin-top: 4rem;
 }
 
 .card-title.neb-title {
