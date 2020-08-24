@@ -11,12 +11,29 @@ const taskInput = document.querySelector('#task');
 const modalTrigger = document.querySelector('.modal-trigger');
 const wisdomChecked = $('#wisdomCheck').is(':checked');
 
+const userName = "Benjamin";
 
+
+// Greeting
+
+let insertuserName = document.querySelector('.user-name').innerText = userName;
+let dashGreeting = document.querySelector('.time-greeting');
 // Get date
 
 let d = new Date();
+let currentHour = d.getHours();
 let y = d.toLocaleDateString('en-US');
 var today = document.getElementById('tDate').innerText = y;
+
+
+
+if (currentHour < 12) {
+    dashGreeting.innerText = "Good Morning, "
+} else if (currentHour < 18) {
+    dashGreeting.innerText = "Good Afternoon, "
+} else {
+    dashGreeting.innerText = "Good Evening, "
+}
 
 
 //Get time
